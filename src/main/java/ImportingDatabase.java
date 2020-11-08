@@ -3,25 +3,27 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ImportingDatabase {// cette classe permet de faire l'importation de la base de données
-
-    private String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
-    private String databaseUserName ="postgres";
-    private String databaseUserPassword ="tmtc";
+    final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
+    final String databaseUserName ="postgres";
+    final String databaseUserPassword ="Heroes";
+    Connection con = null;
 
     public Connection connect(){
-
-        Connection con = null;
         try {
             con = DriverManager.getConnection(databaseURL, databaseUserName, databaseUserPassword);
             System.out.println("Connection completed");
-
-        }
-
-        catch(SQLException s){
-
+        }catch(SQLException s){
             System.out.println("Echec de la connexion : " + s.getMessage());
         }
         return con;
+    }
+
+    // Methode pour arrêter la connexion
+    public void close() throws SQLException {
+        if(con != null) {
+            con.close();
+            System.out.println("Connection closed.");
+        }
     }
 
 
