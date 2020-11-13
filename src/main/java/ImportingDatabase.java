@@ -1,11 +1,12 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ImportingDatabase {// cette classe permet de faire l'importation de la base de données
     final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
     final String databaseUserName ="postgres";
-    final String databaseUserPassword ="Heroes";
+    final String databaseUserPassword ="tmtc";
     Connection con = null;
 
     public Connection connect(){
@@ -25,6 +26,16 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             System.out.println("Connection closed.");
         }
     }
+
+    public <T> List<T> retrieve(Class<T> beanClass, String sql){
+        
+
+
+        return null;
+
+    }
+
+
 
 
 }

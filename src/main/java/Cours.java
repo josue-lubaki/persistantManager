@@ -1,10 +1,23 @@
+import annotations.Bean;
+import annotations.BeanList;
+import annotations.Ignore;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Bean(table ="cours", primaryKey="coursid",listMyInstance = "listeCours")
 public class Cours {
     /********* Variables instances *********/
     private int coursid;
     private String nameCours;
     private String sigle;
     private String description;
-    // Ajouter une liste d'inscription
+
+    @Ignore
+    public static List<Cours> listeCours = new ArrayList<>();
+
+    @BeanList
+    private List<Inscription> inscriptions = new ArrayList<>();
 
     /************* Constructor *************/
     public Cours(int coursid, String nameCours, String sigle, String description){

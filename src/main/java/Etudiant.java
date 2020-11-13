@@ -1,10 +1,25 @@
+import annotations.Bean;
+import annotations.BeanIntern;
+import annotations.BeanList;
+import annotations.Ignore;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Bean(table = "etudiant", primaryKey = "etudiantid", listMyInstance = "listeEtudiants")
 public class Etudiant {
     /********* Variables instances *********/
     private int etudiantid;
     private String fname;
     private String lname;
     private int age;
-    // Liste d'inscription à ajouter
+
+    @Ignore
+    public static List<Etudiant> listeEtudiants = new ArrayList<>();
+
+    @BeanList
+    private List<Inscription> inscriptions = new ArrayList<>();
+
 
     /*********** Constructor **************/
     public Etudiant(int etudiantid, String fname, String lname, int age){
