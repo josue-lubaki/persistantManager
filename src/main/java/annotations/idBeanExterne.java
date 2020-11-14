@@ -7,5 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface BeanList {
+
+public @interface idBeanExterne {
+    String idbeanexterne();
 }
