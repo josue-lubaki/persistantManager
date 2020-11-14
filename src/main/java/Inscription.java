@@ -1,24 +1,37 @@
+import annotations.Bean;
+import annotations.idBeanExterne;
+import annotations.Ignore;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Bean(table="inscription", primaryKey = "inscriptionid", listMyInstance = "listeInscriptions")
 public class Inscription {
     /******* Variables instances *********/
     private int inscriptionid;
     private int etudiantid;
     private int coursid;
-    // Ajouter deux instances : Cours et Etudiant
+
+    @idBeanExterne(idbeanexterne = "coursid")
+    private Cours unCours;
+
+    @idBeanExterne(idbeanexterne = "etudiantid")
+    private Etudiant unEtudiant;
+
+    @Ignore
+    public static List<Inscription> listeInscriptions = new ArrayList<>();
 
     /************ Constructor ***********/
-    public Inscription(int inscriptionid, int etudiantid, int coursid){
-        this.inscriptionid = inscriptionid;
+    public Inscription(int etudiantid, int coursid){
+
         this.etudiantid = etudiantid;
         this.coursid = coursid;
+        listeInscriptions.add(this);
     }
 
     /********* Getter & Setter **********/
     public int getInscriptionid() {
         return inscriptionid;
-    }
-
-    public void setInscriptionid(int inscriptionid) {
-        this.inscriptionid = inscriptionid;
     }
 
     public int getEtudiantid() {
