@@ -10,7 +10,7 @@ import java.util.List;
 public class ImportingDatabase {// cette classe permet de faire l'importation de la base de données
     final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
     final String databaseUserName ="postgres";
-    final String databaseUserPassword ="tmtc";
+    final String databaseUserPassword ="Heroes";
     static Connection con = null;
 
     public Connection getCon() {
