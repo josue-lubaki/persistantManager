@@ -20,20 +20,16 @@ public class Cours {
     private List<Inscription> inscriptions = new ArrayList<>();
 
     /************* Constructor *************/
-    public Cours(int coursid, String nameCours, String sigle, String description){
-        this.coursid = coursid;
+    public Cours( String nameCours, String sigle, String description){
         this.nameCours = nameCours;
         this.sigle = sigle;
         this.description = description;
+        listeCours.add(this);
     }
 
     /************ Getter & Setter **********/
     public int getCoursid() {
         return coursid;
-    }
-
-    public void setCoursid(int coursid) {
-        this.coursid = coursid;
     }
 
     public String getNameCours() {

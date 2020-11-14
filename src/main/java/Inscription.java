@@ -1,5 +1,5 @@
 import annotations.Bean;
-import annotations.BeanIntern;
+import annotations.idBeanExterne;
 import annotations.Ignore;
 
 import java.util.ArrayList;
@@ -12,29 +12,26 @@ public class Inscription {
     private int etudiantid;
     private int coursid;
 
-    @BeanIntern
+    @idBeanExterne(idbeanexterne = "coursid")
     private Cours unCours;
 
-    @BeanIntern
+    @idBeanExterne(idbeanexterne = "etudiantid")
     private Etudiant unEtudiant;
 
     @Ignore
     public static List<Inscription> listeInscriptions = new ArrayList<>();
 
     /************ Constructor ***********/
-    public Inscription(int inscriptionid, int etudiantid, int coursid){
-        this.inscriptionid = inscriptionid;
+    public Inscription(int etudiantid, int coursid){
+
         this.etudiantid = etudiantid;
         this.coursid = coursid;
+        listeInscriptions.add(this);
     }
 
     /********* Getter & Setter **********/
     public int getInscriptionid() {
         return inscriptionid;
-    }
-
-    public void setInscriptionid(int inscriptionid) {
-        this.inscriptionid = inscriptionid;
     }
 
     public int getEtudiantid() {

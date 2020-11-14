@@ -1,5 +1,4 @@
 import annotations.Bean;
-import annotations.BeanIntern;
 import annotations.BeanList;
 import annotations.Ignore;
 
@@ -22,20 +21,16 @@ public class Etudiant {
 
 
     /*********** Constructor **************/
-    public Etudiant(int etudiantid, String fname, String lname, int age){
-        this.etudiantid = etudiantid;
+    public Etudiant(String fname, String lname, int age){
         this.fname = fname;
         this.lname = lname;
         this.age = age;
+        listeEtudiants.add(this);
     }
 
     /********** Getter & Setter ***********/
     public int getEtudiantid() {
         return etudiantid;
-    }
-
-    public void setEtudiantid(int etudiantid) {
-        this.etudiantid = etudiantid;
     }
 
     public String getFname() {
