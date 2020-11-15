@@ -20,7 +20,8 @@ public class Etudiant {
     private List<Inscription> inscriptions = new ArrayList<>();
 
 
-    /*********** Constructor **************/
+    /*********** Constructors **************/
+    public Etudiant(){listeEtudiants.add(this);}
     public Etudiant(String fname, String lname, int age){
         this.fname = fname;
         this.lname = lname;
@@ -55,5 +56,10 @@ public class Etudiant {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Etudiant : " + fname + " " + lname + " a " + age;
     }
 }

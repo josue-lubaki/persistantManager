@@ -19,7 +19,8 @@ public class Cours {
     @BeanList
     private List<Inscription> inscriptions = new ArrayList<>();
 
-    /************* Constructor *************/
+    /************* Constructors *************/
+    public Cours(){listeCours.add(this);}
     public Cours( String nameCours, String sigle, String description){
         this.nameCours = nameCours;
         this.sigle = sigle;
@@ -54,5 +55,10 @@ public class Cours {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Cours : " + nameCours + " " + description + " a pour Sigle : " + sigle;
     }
 }

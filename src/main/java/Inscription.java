@@ -12,16 +12,17 @@ public class Inscription {
     private int etudiantid;
     private int coursid;
 
-    @idBeanExterne(idbeanexterne = "coursid")
+    @idBeanExterne
     private Cours unCours;
 
-    @idBeanExterne(idbeanexterne = "etudiantid")
+    @idBeanExterne
     private Etudiant unEtudiant;
 
     @Ignore
     public static List<Inscription> listeInscriptions = new ArrayList<>();
 
-    /************ Constructor ***********/
+    /************ Constructors ***********/
+    public Inscription(){listeInscriptions.add(this);}
     public Inscription(int etudiantid, int coursid){
 
         this.etudiantid = etudiantid;
