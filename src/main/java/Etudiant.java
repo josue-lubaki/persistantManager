@@ -28,6 +28,11 @@ public class Etudiant {
         listeEtudiants.add(this);
     }
 
+    public Etudiant(){
+
+        listeEtudiants.add(this);
+    }
+
     /********** Getter & Setter ***********/
     public int getEtudiantid() {
         return etudiantid;
@@ -56,4 +61,12 @@ public class Etudiant {
     public void setAge(int age) {
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return "Etudiant : " + fname + " " + lname + " a " + age;
+    }
+
 }
+
+

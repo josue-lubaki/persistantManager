@@ -25,40 +25,11 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8">
-        <schema name="pg_catalog" object-types="function" />
-        <schema name="public" object-types="column, table, dataset trigger, constraint, view, function, index, sequence" />
+        <schema name="public" object-types="index, view, function, dataset trigger, constraint, column, sequence, table" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d">
-      <console name="Connectivity" type="STANDARD" schema="public" session="Main"><![CDATA[From Josue Lubaki to Everyone: (2:27 PM)
- /* Creation Table etudiant */
-Create table etudiant(
-    etudiantid int NOT NULL PRIMARY KEY,
-    fname varchar NOT NULL,
-    lname varchar NOT NULL,
-    age int NOT NULL CONSTRAINT check_age CHECK (age > 16)
-)
-
-/* Creation Table cours */
-Create table cours(
-    coursid int NOT NULL PRIMARY KEY,
-    nameCours varchar NOT NULL,
-    sigle varchar NOT NULL,
-    description text
-)
-
-/* Creation Table inscription */
-Create table inscription(
-    inscriptionid int NOT NULL PRIMARY KEY,
-    etudiantid int NOT NULL REFERENCES etudiant(etudiantid),
-    coursid int NOT NULL REFERENCES cours(coursid),
-    dates timestamp NOT NULL default current_timestamp 
-)
-
-Insert into etudiant values(101,'Xuyao','Hu',23);]]></console>
-    </connection>
     <connection id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8">
       <console name="Connection 1" type="STANDARD" schema="public" session="Main"><![CDATA[From Josue Lubaki to Everyone: (2:27 PM)
  /* Creation Table etudiant */
@@ -85,22 +56,35 @@ Create table inscription(
     dates timestamp NOT NULL default current_timestamp 
 )
 
-Insert into etudiant values(101,'Xuyao','Hu',23);]]></console>
+Insert into etudiant values(101,'Xuyao','Hu',23);
+Insert into cours values(1, 'concepts avances', 'inf1035', 'cours difficile'); 
+Insert into inscription(inscriptionid, etudiantid,coursid) values(1,101,1);
+Insert into etudiant values(102,'Ismo','coul',21);
+commit
+Insert into inscription(inscriptionid, etudiantid,coursid) values(2,102,1);
+SELECT * FROM etudiant WHERE etudiantid=102]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" object-ref="schemas/public/tables/inscription" />
+      <object connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" object-ref="schemas/public/tables/etudiant" />
+      <object connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" object-ref="schemas/public/tables/cours" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" />
     <connection id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" dataset="public.cours" active-filter-id="81b804f1-cac7-40df-ac20-9721aafbd9fe">
+      <filter id="81b804f1-cac7-40df-ac20-9721aafbd9fe" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
     <filter-actions connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" dataset="public.etudiant" active-filter-id="fae97e33-dd1b-4203-a49a-f8a48674dc85">
       <filter id="fae97e33-dd1b-4203-a49a-f8a48674dc85" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
-    <filter-actions connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" dataset="public.cours" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" dataset="public.etudiant" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" dataset="public.inscription" active-filter-id="931a266e-03b5-4a17-bcad-42f2b347319f">
+      <filter id="931a266e-03b5-4a17-bcad-42f2b347319f" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -130,89 +114,6 @@ Insert into etudiant values(101,'Xuyao','Hu',23);]]></console>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" active="true">
-        <database>
-          <name value="Connectivity" />
-          <description value="" />
-          <database-type value="POSTGRES" />
-          <config-type value="BASIC" />
-          <database-version value="13.0" />
-          <driver-source value="BUILTIN" />
-          <driver-library value="" />
-          <driver value="" />
-          <url-type value="DATABASE" />
-          <host value="localhost" />
-          <port value="5432" />
-          <database value="postgres" />
-          <type value="USER_PASSWORD" />
-          <user value="postgres" />
-          <deprecated-pwd value="" />
-        </database>
-        <properties>
-          <auto-commit value="false" />
-        </properties>
-        <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
-          <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
-          <auth-type value="PASSWORD" />
-          <key-file value="" />
-          <key-passphrase value="" />
-        </ssh-settings>
-        <ssl-settings>
-          <active value="false" />
-          <certificate-authority-file value="" />
-          <client-certificate-file value="" />
-          <client-key-file value="" />
-        </ssl-settings>
-        <details>
-          <charset value="UTF-8" />
-          <session-management value="true" />
-          <ddl-file-binding value="true" />
-          <database-logging value="false" />
-          <connect-automatically value="true" />
-          <restore-workspace value="true" />
-          <restore-workspace-deep value="true" />
-          <environment-type value="default" />
-          <idle-time-to-disconnect value="30" />
-          <idle-time-to-disconnect-pool value="5" />
-          <credential-expiry-time value="10" />
-          <max-connection-pool-size value="7" />
-          <alternative-statement-delimiter value="" />
-        </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
-          <object-type-filter use-master-settings="true">
-            <object-type name="SCHEMA" enabled="true" />
-            <object-type name="USER" enabled="true" />
-            <object-type name="ROLE" enabled="true" />
-            <object-type name="PRIVILEGE" enabled="true" />
-            <object-type name="CHARSET" enabled="true" />
-            <object-type name="TABLE" enabled="true" />
-            <object-type name="VIEW" enabled="true" />
-            <object-type name="MATERIALIZED_VIEW" enabled="true" />
-            <object-type name="NESTED_TABLE" enabled="true" />
-            <object-type name="COLUMN" enabled="true" />
-            <object-type name="INDEX" enabled="true" />
-            <object-type name="CONSTRAINT" enabled="true" />
-            <object-type name="DATASET_TRIGGER" enabled="true" />
-            <object-type name="DATABASE_TRIGGER" enabled="true" />
-            <object-type name="SYNONYM" enabled="true" />
-            <object-type name="SEQUENCE" enabled="true" />
-            <object-type name="PROCEDURE" enabled="true" />
-            <object-type name="FUNCTION" enabled="true" />
-            <object-type name="PACKAGE" enabled="true" />
-            <object-type name="TYPE" enabled="true" />
-            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
-            <object-type name="ARGUMENT" enabled="true" />
-            <object-type name="DIMENSION" enabled="true" />
-            <object-type name="CLUSTER" enabled="true" />
-            <object-type name="DBLINK" enabled="true" />
-          </object-type-filter>
-          <object-name-filters />
-        </object-filters>
-      </connection>
       <connection id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" active="true">
         <database>
           <name value="Connection 1" />
@@ -232,7 +133,7 @@ Insert into etudiant values(101,'Xuyao','Hu',23);]]></console>
           <deprecated-pwd value="dG10Yw==" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />

@@ -27,6 +27,10 @@ public class Cours {
         listeCours.add(this);
     }
 
+    public Cours(){
+        listeCours.add(this);
+    }
+
     /************ Getter & Setter **********/
     public int getCoursid() {
         return coursid;
@@ -54,5 +58,11 @@ public class Cours {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /*********** toString ****************/
+    @Override
+    public String toString() {
+        return "Nom du Cours : " + nameCours + "\t sigle: " + sigle + " \t description" + description;
     }
 }

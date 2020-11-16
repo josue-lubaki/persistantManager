@@ -49,4 +49,10 @@ public class Inscription {
     public void setCoursid(int coursid) {
         this.coursid = coursid;
     }
+
+
+    @Override
+    public String toString() {
+        return "Inscription : " + inscriptionid + " \t idetudiant: "  + etudiantid + "\t coursid: " + coursid;
+    }
 }

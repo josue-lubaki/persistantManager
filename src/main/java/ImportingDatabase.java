@@ -11,7 +11,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
     final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
     final String databaseUserName ="postgres";
     final String databaseUserPassword ="tmtc";
-    static Connection con = null;
+    Connection con = null;
 
     public Connection getCon() {
         return con;
@@ -39,7 +39,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         }
     }
 
-    public static <T> List<T> retrieveSet(Class<T> beanClass, String sql) throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException {
+    public <T> List<T> retrieveSet(Class<T> beanClass, String sql) throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException {
 
         //initialisation d'une liste
         List<T> list = new ArrayList<>();
@@ -69,21 +69,14 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
 
                 field.setAccessible(true);
 
-                //si le type du champ ou s'il s'agit d'un string ou encore Timestamp
-                if(field.getType().isPrimitive() || field.getType().isInstance(new Timestamp(System.currentTimeMillis()))) {
-
-                    int colonne = resultatQuery.findColumn(field.getName());
-                    field.set(bean, resultatQuery.getObject(colonne));
-                }
-
-                else if(field.getAnnotations().length != 0){//si c'est egal a 0,le champ contient des annotations alors
+                if(field.getAnnotations().length != 0){//si c'est egal a 0,le champ contient des annotations alors
                     uneAnnotation = field.getAnnotations()[0];
                     if(uneAnnotation instanceof Ignore) {continue;}
 
                     else if(uneAnnotation instanceof BeanList){
 
                         // Obtenir le representant la Classe qui contient data puis le nom de son Champ
-                        className = ((ParameterizedType)field.getGenericType()).getActualTypeArguments()[0].getTypeName();
+                        className = beanClass.getCanonicalName();
 
                         try {
                             nameTable = Class.forName(className).getAnnotation(Bean.class).table();
@@ -121,6 +114,13 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                         }
 
                     }
+                }
+
+                //si le type du champ ou s'il s'agit d'un string ou encore Timestamp
+                if(field.getType().isPrimitive() || field.getType().isInstance(new Timestamp(System.currentTimeMillis()))) {
+
+                    int colonne = resultatQuery.findColumn(field.getName());
+                    field.set(bean, resultatQuery.getObject(colonne));
                 }
             }
 
