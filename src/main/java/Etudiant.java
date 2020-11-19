@@ -64,6 +64,6 @@ public class Etudiant {
 
     @Override
     public String toString() {
-        return etudiantid + " | " + fname + " | " + lname + " a " + age;
+        return "Etudiant : " + etudiantid + " - " + fname + " " + lname + " a " + age;
     }
 }

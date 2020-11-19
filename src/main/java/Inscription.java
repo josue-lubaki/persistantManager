@@ -55,6 +55,6 @@ public class Inscription {
     public Etudiant getUnEtudiant(){return unEtudiant;}
     @Override
     public String toString() {
-        return inscriptionid + " | " + etudiantid + " | " + coursid;
+        return inscriptionid + " | etudiantid : " + etudiantid + " | coursid : " + coursid;
     }
 }

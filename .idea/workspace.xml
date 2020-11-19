@@ -21,22 +21,24 @@
     </expand>
     <select />
   </component>
+  <component name="BuildServerSettings">
+    <treeState key="project">
+      <selectedPath>
+        <pathElement>
+          <option name="myNodeId" value="helperText" />
+          <option name="myNodeType" value="jetbrains.buildServer.tree.descriptors.LinkedTextDescriptor" />
+        </pathElement>
+      </selectedPath>
+    </treeState>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc58660-ab83-40e9-b472-2ed006fc0fce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inf1035-tp2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Inf1035-tp2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Cours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cours.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Etudiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Etudiant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Inscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Inscription.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Cours.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Cours.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Etudiant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Etudiant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImportingDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ImportingDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Inscription.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Inscription.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +62,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Tp-2_Resolus/Nicolas_BoisVert/inf1035-2" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.27787307" />
@@ -103,10 +105,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1526" y="0" key="#Project_Structure" timestamp="1605747893054">
+    <state x="1526" y="0" key="#Project_Structure" timestamp="1605759313855">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state x="1526" y="0" key="#Project_Structure/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605747893054" />
+    <state x="1526" y="0" key="#Project_Structure/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605759313855" />
     <state x="1807" y="84" key="#com.intellij.ide.util.MemberChooser" timestamp="1605409325043">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
@@ -135,46 +137,46 @@
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
     <state x="1576" y="38" key="DBNavigator.ProjectSettingsDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605391377240" />
-    <state width="898" height="534" key="DebuggerActiveHint" timestamp="1605745787933">
+    <state width="898" height="534" key="DebuggerActiveHint" timestamp="1605761179999">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state width="898" height="534" key="DebuggerActiveHint/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605745787933" />
-    <state x="1826" y="138" key="FileChooserDialogImpl" timestamp="1605419471429">
+    <state width="898" height="534" key="DebuggerActiveHint/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605761179999" />
+    <state x="1826" y="138" key="FileChooserDialogImpl" timestamp="1605759363809">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state x="1826" y="138" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605419471429" />
-    <state width="1317" height="186" key="GridCell.Tab.0.bottom" timestamp="1605755870892">
+    <state x="1826" y="138" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605759363809" />
+    <state width="1317" height="373" key="GridCell.Tab.0.bottom" timestamp="1605764893288">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state width="1317" height="186" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755870892" />
-    <state width="1317" height="186" key="GridCell.Tab.0.center" timestamp="1605755870891">
+    <state width="1317" height="373" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893288" />
+    <state width="1317" height="373" key="GridCell.Tab.0.center" timestamp="1605764893272">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state width="1317" height="186" key="GridCell.Tab.0.center/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755870891" />
-    <state width="1317" height="186" key="GridCell.Tab.0.left" timestamp="1605755870891">
+    <state width="1317" height="373" key="GridCell.Tab.0.center/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
+    <state width="1317" height="373" key="GridCell.Tab.0.left" timestamp="1605764893272">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state width="1317" height="186" key="GridCell.Tab.0.left/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755870891" />
-    <state width="1317" height="186" key="GridCell.Tab.0.right" timestamp="1605755870891">
+    <state width="1317" height="373" key="GridCell.Tab.0.left/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
+    <state width="1317" height="373" key="GridCell.Tab.0.right" timestamp="1605764893288">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state width="1317" height="186" key="GridCell.Tab.0.right/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755870891" />
-    <state width="1317" height="170" key="GridCell.Tab.1.bottom" timestamp="1605755668157">
+    <state width="1317" height="373" key="GridCell.Tab.0.right/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893288" />
+    <state width="1317" height="396" key="GridCell.Tab.1.bottom" timestamp="1605764893272">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state width="1317" height="170" key="GridCell.Tab.1.bottom/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755668157" />
-    <state width="1317" height="170" key="GridCell.Tab.1.center" timestamp="1605755668156">
+    <state width="1317" height="396" key="GridCell.Tab.1.bottom/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
+    <state width="1317" height="396" key="GridCell.Tab.1.center" timestamp="1605764893272">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state width="1317" height="170" key="GridCell.Tab.1.center/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755668156" />
-    <state width="1317" height="170" key="GridCell.Tab.1.left" timestamp="1605755668155">
+    <state width="1317" height="396" key="GridCell.Tab.1.center/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
+    <state width="1317" height="396" key="GridCell.Tab.1.left" timestamp="1605764893272">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state width="1317" height="170" key="GridCell.Tab.1.left/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755668155" />
-    <state width="1317" height="170" key="GridCell.Tab.1.right" timestamp="1605755668156">
+    <state width="1317" height="396" key="GridCell.Tab.1.left/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
+    <state width="1317" height="396" key="GridCell.Tab.1.right" timestamp="1605764893272">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state width="1317" height="170" key="GridCell.Tab.1.right/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755668156" />
+    <state width="1317" height="396" key="GridCell.Tab.1.right/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
     <state x="1547" y="28" key="SettingsEditor" timestamp="1605755590988">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
@@ -195,30 +197,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ImportingDatabase.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ImportingDatabase.java</url>
-          <line>165</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="26" />
-        </breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="34" />

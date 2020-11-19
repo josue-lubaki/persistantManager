@@ -32,6 +32,17 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         return con;
     }
 
+    public void close(){
+        if(con != null) {
+            try {
+                con.close();
+            } catch (SQLException errorConnexion) {
+                System.out.println("La Connexion n'a pu être établie");
+                errorConnexion.printStackTrace();
+            }
+        }
+    }
+
     public <T> List<T> retrieveSet(Class<T> beanClass, String sql){
 
         // initialisation d'une liste
@@ -134,15 +145,6 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             System.out.println("Impossible d'accèder à " + beanClass.getDeclaredFields().getClass().getName() + "\n");
             e.printStackTrace();
             return null;
-        } finally{
-            if(con != null) {
-                try{
-                    con.close();
-                }catch (SQLException connectionClose) {
-                    System.out.println("Erreur lors de la fermeture de la Connexion.");
-                    connectionClose.printStackTrace();
-                }
-            }
         }
     }
 
@@ -169,6 +171,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                     return bean;
                 }
             }
+            uneListe = new ArrayList<>();
             //System.out.println("---->ID :" + unID + " n'existe pas");
             return null;
         } catch (NoSuchFieldException e) {
