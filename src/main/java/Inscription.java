@@ -13,13 +13,13 @@ public class Inscription {
     private int coursid;
 
     @idBeanExterne
-    private Cours unCours;
+    public Cours unCours;
 
     @idBeanExterne
-    private Etudiant unEtudiant;
+    public Etudiant unEtudiant;
 
     @Ignore
-    public static List<Inscription> listeInscriptions = new ArrayList<>();
+    public static final ArrayList<Inscription> listeInscriptions = new ArrayList<>();
 
     /************ Constructors ***********/
     public Inscription(){listeInscriptions.add(this);}
@@ -49,5 +49,12 @@ public class Inscription {
 
     public void setCoursid(int coursid) {
         this.coursid = coursid;
+    }
+
+    public Cours getUnCours(){return unCours;}
+    public Etudiant getUnEtudiant(){return unEtudiant;}
+    @Override
+    public String toString() {
+        return inscriptionid + " | " + etudiantid + " | " + coursid;
     }
 }

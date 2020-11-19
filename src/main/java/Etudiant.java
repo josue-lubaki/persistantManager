@@ -2,6 +2,8 @@ import annotations.Bean;
 import annotations.BeanList;
 import annotations.Ignore;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,19 +16,21 @@ public class Etudiant {
     private int age;
 
     @Ignore
-    public static List<Etudiant> listeEtudiants = new ArrayList<>();
+    public static final ArrayList<Etudiant> listeEtudiants = new ArrayList<>();
 
     @BeanList
-    private List<Inscription> inscriptions = new ArrayList<>();
+    public ArrayList<Inscription> inscriptions = new ArrayList<>();
 
 
     /*********** Constructors **************/
     public Etudiant(){listeEtudiants.add(this);}
-    public Etudiant(String fname, String lname, int age){
+    public Etudiant(String fname, String lname, int age) {
         this.fname = fname;
         this.lname = lname;
         this.age = age;
-        listeEtudiants.add(this);
+        // Ne Considerer Que les saisies Correctes
+        if(fname != null && lname != null)
+            listeEtudiants.add(this);
     }
 
     /********** Getter & Setter ***********/
@@ -60,6 +64,6 @@ public class Etudiant {
 
     @Override
     public String toString() {
-        return "Etudiant : " + fname + " " + lname + " a " + age;
+        return etudiantid + " | " + fname + " | " + lname + " a " + age;
     }
 }

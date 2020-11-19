@@ -3,6 +3,7 @@ import annotations.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
     private final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
     private final String databaseUserName = "postgres";
     private final String databaseUserPassword = "Heroes";
-    private static Connection con = null;
+    private Connection con = null;
 
     public Connection getCon() {
         return con;
@@ -31,22 +32,14 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         return con;
     }
 
-    // Methode pour arrêter la connexion
-    public void close() throws SQLException {
-        if (con != null) {
-            con.close();
-            System.out.println("Connection closed.");
-        }
-    }
-
-    public static <T> List<T> retrieveSet(Class<T> beanClass, String sql){
+    public <T> List<T> retrieveSet(Class<T> beanClass, String sql){
 
         // initialisation d'une liste
-        List<T> list = new ArrayList<>();
+        ArrayList<T> list = new ArrayList<>();
         try {
             // creation de la connexion
             Statement statement = con.createStatement();
-            System.out.println("Requete SQL: \"" + sql + " \" ");
+            //System.out.println("Requete SQL: \"" + sql + " \" ");
 
             // on execute la requete SQL a partir de la connexion
             ResultSet resultatQuery = statement.executeQuery(sql);
@@ -60,6 +53,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             String clef_Primaire; // Nom de la clé correspondant à la Proprieté <primaryKey> dans un @Bean
             int idClefPrimaire; // L'ID correspondant la valeur de la clé primaire sur le Bean dont on se situe.
             String request = null; // La Requete SQL produit pendant la recursivité
+            int colonnes;
 
             //on parcourt les resultats de la requete (Table Data)
             while (resultatQuery.next()) {
@@ -96,13 +90,12 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                         }
                         if (uneAnnotation instanceof idBeanExterne) {
                             try {
-                                className = field.getAnnotation(Bean.class).table();
-                                //className = field.getType().getName();
+                                className = field.getType().getName();
                                 nameTable = Class.forName(className).getAnnotation(Bean.class).table();
                                 clef_Primaire = Class.forName(className).getAnnotation(Bean.class).primaryKey();
                                 idClefPrimaire = (int) resultatQuery.getObject(resultatQuery.findColumn(clef_Primaire));
-
-                                if ((tempBean = VerifierExistence((Class<T>) Class.forName(className), idClefPrimaire)) != null) {
+                                tempBean = VerifierExistence((Class<T>) Class.forName(className),clef_Primaire);
+                                if (tempBean != null) {
                                     field.set(bean, tempBean);
                                 } else {
                                     request = "SELECT * FROM " + nameTable + " WHERE " + clef_Primaire + " = " + idClefPrimaire;
@@ -112,9 +105,8 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                                 e.printStackTrace();
                             }
                         }
-                    } else if (field.getClass().isPrimitive() || field.getType().isInstance(new String())
-                                || field.getType().isInstance(new Timestamp(System.currentTimeMillis()))) {
-                            int colonnes = resultatQuery.findColumn(field.getName());
+                    } else if (field.getType().isPrimitive() || field.getType().isInstance(new String())) {
+                            colonnes = resultatQuery.findColumn(field.getName());
                             field.set(bean, resultatQuery.getObject(colonnes));
                         }
                 }
@@ -122,31 +114,39 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                 Field id = beanClass.getDeclaredField(nomID);//on recupere un champ qui represente l'id de la classe courante
                 id.setAccessible(true);
 
-                if ((tempBean = VerifierExistence(beanClass, id.getInt(bean))) != null) {    //Vérifie l'existence du bean avec son ID
+                tempBean = VerifierExistence(beanClass, nomID);
+                if (tempBean != null) {    //Vérifie l'existence du bean avec son ID
                     list.add(tempBean);
-                } else {
+                }
+                else {
                     list.add(bean);
                 }
             }
             // Fermeture de la Requete et de sa liaison avec la Base de donnée
             resultatQuery.close();
             statement.close();
-
+            return list;
         } catch (SQLException e) {
             System.out.println("Desolé, la Connexion à la Base de donnée n'a pas pu être établie\n");
             e.printStackTrace();
+            return null;
         } catch (IllegalAccessException | NoSuchFieldException e) {
             System.out.println("Impossible d'accèder à " + beanClass.getDeclaredFields().getClass().getName() + "\n");
             e.printStackTrace();
-        } finally {
-            System.out.println( "La Methode is Completed");
-            return list;
+            return null;
+        } finally{
+            if(con != null) {
+                try{
+                    con.close();
+                }catch (SQLException connectionClose) {
+                    System.out.println("Erreur lors de la fermeture de la Connexion.");
+                    connectionClose.printStackTrace();
+                }
+            }
         }
-
-
     }
 
-    private static <T> T VerifierExistence(Class<T> beanClass, int unID) {
+    private static <T> T VerifierExistence(Class<T> beanClass, String unID) {
         String nomID = null;//on declare le nom de la liste de l'id qu'on veut recuperer
         String nomFieldList = null;//on declare le nom de la liste de field qu'on veut recuperer
 
@@ -160,26 +160,26 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             Field fieldList = beanClass.getDeclaredField(nomFieldList);
             fieldList.setAccessible(true);
 
-            List<T> uneListe = (ArrayList) fieldList.get(null);
-            System.out.println("--->TEST : " + beanClass.getSimpleName() + " " + unID);
+            ArrayList<T> uneListe = (ArrayList<T>) fieldList.get(null);
+            //System.out.println("--->TEST : " + beanClass.getSimpleName() + " " + unID);
 
             for (T bean : uneListe) {
-                if (fieldList.getInt(bean) == unID) {
-                    System.out.println("---->ID :" + unID + " existe deja");
+                if (bean.getClass().getAnnotation(Bean.class).primaryKey() == unID) { // TODO : Condition pas assez Cohérente
+                    //System.out.println("---->ID :" + unID + " existe deja");
                     return bean;
                 }
             }
+            //System.out.println("---->ID :" + unID + " n'existe pas");
+            return null;
         } catch (NoSuchFieldException e) {
             System.out.println("Le representant de " + nomID + " n'existe pas");
             e.printStackTrace();
+            return null;
         } catch (IllegalAccessException e) {
             System.out.println("Le representant de" + nomFieldList + " n'existe pas");
             e.printStackTrace();
+            return null;
         }
-
-        System.out.println("---->ID :" + unID + " n'existe pas");
-
-        return null;
     }
 
 

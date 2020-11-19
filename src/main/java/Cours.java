@@ -3,7 +3,6 @@ import annotations.BeanList;
 import annotations.Ignore;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Bean(table ="cours", primaryKey="coursid",listMyInstance = "listeCours")
 public class Cours {
@@ -14,16 +13,16 @@ public class Cours {
     private String description;
 
     @Ignore
-    public static List<Cours> listeCours = new ArrayList<>();
+    public static final ArrayList<Cours> listeCours = new ArrayList<>();
 
     @BeanList
-    private List<Inscription> inscriptions = new ArrayList<>();
+    public ArrayList<Inscription> inscriptions = new ArrayList<>();
 
     /************* Constructors *************/
     public Cours(){listeCours.add(this);}
-    public Cours( String nameCours, String sigle, String description){
-        this.nameCours = nameCours;
-        this.sigle = sigle;
+    public Cours( String nameCourse, String single, String description){
+        this.nameCours = nameCourse;
+        this.sigle = single;
         this.description = description;
         listeCours.add(this);
     }
@@ -59,6 +58,6 @@ public class Cours {
 
     @Override
     public String toString() {
-        return "Cours : " + nameCours + " " + description + " a pour Sigle : " + sigle;
+        return coursid + " | " + nameCours + " | " + description + " a pour Sigle : " + sigle;
     }
 }
