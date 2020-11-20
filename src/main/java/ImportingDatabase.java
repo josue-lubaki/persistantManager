@@ -169,7 +169,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             //System.out.println("--->TEST : " + beanClass.getSimpleName() + " " + unID);
 
             for (T bean : uneListe) {
-                if (bean.getClass(). == unID) { // TODO : Condition pas assez Cohérente
+                if (bean.getClass().getAnnotation(Bean.class).primaryKey() == unID) { // TODO : Condition pas assez Cohérente
                     //System.out.println("---->ID :" + unID + " existe deja");
                     return bean;
                 }
