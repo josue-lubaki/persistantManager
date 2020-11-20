@@ -37,11 +37,8 @@ public class Main {
 
                 System.exit(0);
             }
-            else
-                monChoix = 0;
 
-
-        }while(monChoix != 1 && monChoix != 2 && monChoix != 3 && monChoix == 0 );
+        }while(monChoix != 1 && monChoix != 2 && monChoix != 3 );
     }
 
     /* Methode Affichant le Menu pour Permettre de Recueillir les Données */
