@@ -58,10 +58,7 @@ SELECT * FROM etudiant WHERE etudiantid = 102;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" object-ref="schemas/public/tables/cours" />
-      <object connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" object-ref="schemas/public/tables/inscription" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" />

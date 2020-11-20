@@ -12,29 +12,36 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("\t\t\tMENU PRINCIPALE\n\n Tapez le chiffre qui correspond à votre action :");
+
         int monChoix = 0;
+        boolean flag = true;
+        boolean sortir = false;
+        String decision = null;
+
 
         do{
+            System.out.println("\t\t\tMENU PRINCIPALE\n\n Tapez le chiffre qui correspond à votre action :");
             System.out.println("1. Obtenir les Données Venant de la Base des Données\n" +
                     "2. Entrer une nouvelle donnée dans la Base de Données\n" +
                     "3. Quitter");
             monChoix = chiffre.nextInt();
-            if(monChoix == 1)
+            if(monChoix == 1) {
                 ConsultationDonnees();
-            else if (monChoix == 2)
+                monChoix = 0 ;
+            }
+            else if (monChoix == 2) {
                 ConsultationDonnees(); // TODO : à modifier pour le remplacer par L'Insertion
-            else if (monChoix == 3)
-                continue;
+                monChoix = 0 ;
+            }
+            else if (monChoix == 3) {
 
-            String decision = null;
-            do{
-                System.out.println("Voulez-vous exécuter une autre action (Y/N)");
-                decision = scan.nextLine();
-                if(decision.toLowerCase().equals("y"))
-                    monChoix = 0;
-            }while(decision.toLowerCase() != "y" && decision.toLowerCase() != "n");
-        }while(monChoix != 1 && monChoix != 2 && monChoix == 0);
+                System.exit(0);
+            }
+            else
+                monChoix = 0;
+
+
+        }while(monChoix != 1 && monChoix != 2 && monChoix != 3 && monChoix == 0 );
     }
 
     /* Methode Affichant le Menu pour Permettre de Recueillir les Données */
@@ -105,12 +112,22 @@ public class Main {
                 default:
                     System.out.println("Veuillez entrer une commande Valide !");
             }
-            do{
+            boolean flag2 = true;
+            boolean sortir2 = false;
+            while(flag2){
                 System.out.println("Voulez-vous obtenir une autre donnée (Y/N)");
                 decision = scan.nextLine();
-                if(decision.toLowerCase().equals("y"))
+                if(decision.toLowerCase().equals("y")) {
+                    flag2 = false;
                     choixUser = 0;
-            }while(!decision.toLowerCase().equals("y") && !decision.toLowerCase().equals("n"));
+                }
+                if(decision.toLowerCase().equals("n")){
+                    flag2 =false;
+                    sortir2 = true;
+
+                }
+            }
+            if(sortir2){break;}
         } while (choixUser != 1 && choixUser != 2 && choixUser != 3 && choixUser != 4 && choixUser != 5
                 && choixUser != 6 && choixUser == 0);
 

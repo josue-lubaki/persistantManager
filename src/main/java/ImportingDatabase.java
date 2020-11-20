@@ -12,7 +12,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
 
     private final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
     private final String databaseUserName = "postgres";
-    private final String databaseUserPassword = "Heroes";
+    private final String databaseUserPassword = "tmtc";
     private Connection con = null;
 
 
@@ -169,7 +169,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             //System.out.println("--->TEST : " + beanClass.getSimpleName() + " " + unID);
 
             for (T bean : uneListe) {
-                if (bean.getClass().getAnnotation(Bean.class).primaryKey() == unID) { // TODO : Condition pas assez Cohérente
+                if (bean.getClass(). == unID) { // TODO : Condition pas assez Cohérente
                     //System.out.println("---->ID :" + unID + " existe deja");
                     return bean;
                 }
