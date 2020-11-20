@@ -9,17 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImportingDatabase {// cette classe permet de faire l'importation de la base de données
-<<<<<<< HEAD
-    final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
-    final String databaseUserName ="postgres";
-    final String databaseUserPassword ="tmtc";
-    Connection con = null;
-=======
+
     private final String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
     private final String databaseUserName = "postgres";
     private final String databaseUserPassword = "Heroes";
     private Connection con = null;
->>>>>>> master
+
 
     public Connection getCon() {
         return con;
@@ -50,46 +45,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         }
     }
 
-<<<<<<< HEAD
-    public <T> List<T> retrieveSet(Class<T> beanClass, String sql) throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException {
 
-        //initialisation d'une liste
-        List<T> list = new ArrayList<>();
-
-        //creation de la connexion
-        Statement statement = con.createStatement();
-        System.out.println("Requete SQL: \""+ sql+" \" ");
-
-        //on execute la requete SQL a partir de la connexion
-        ResultSet resultatQuery = statement.executeQuery(sql);
-
-        T bean, tempBean;
-        Annotation uneAnnotation;
-        String className; // Obtenir le nom du Representant d'un object
-        String nameTable = null; // Nom de la Table correspondant à la Proprieté <table> dans un @Bean
-        String clef_Primaire; // Nom de la clé correspondant à la Proprieté <primaryKey> dans un @Bean
-        int idClefPrimaire; // L'ID correspondant la valeur de la clé primaire sur le Bean dont on se situe.
-        String request =null; // La Requete SQL produit pendant la recursivité
-
-        //on parcourt les resultats de la requete
-        while(resultatQuery.next()){
-
-            bean = beanClass.newInstance();//on instancie un objet
-            Field[] fields = beanClass.getDeclaredFields();//on recupere toutes les donnes qui ont ete encapsules
-
-            for(Field field : fields){//on itere dans un tableau fields de champs (Field)
-
-                field.setAccessible(true);
-
-                if(field.getAnnotations().length != 0){//si c'est egal a 0,le champ contient des annotations alors
-                    uneAnnotation = field.getAnnotations()[0];
-                    if(uneAnnotation instanceof Ignore) {continue;}
-
-                    else if(uneAnnotation instanceof BeanList){
-
-                        // Obtenir le representant la Classe qui contient data puis le nom de son Champ
-                        className = beanClass.getCanonicalName();
-=======
     public <T> List<T> retrieveSet(Class<T> beanClass, String sql){
 
         // initialisation d'une liste
@@ -124,7 +80,6 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                 Field[] fields = beanClass.getDeclaredFields();//on recupere toutes les donnes qui ont ete encapsules
 
                 for (Field field : fields) {//on itere dans un tableau fields de champs (Field)
->>>>>>> master
 
                     field.setAccessible(true);
                     if (field.getAnnotations().length != 0) {//si c'est egal a 0,le champ contient des annotations alors
@@ -169,25 +124,9 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                             field.set(bean, resultatQuery.getObject(colonnes));
                         }
                 }
-<<<<<<< HEAD
-
-                //si le type du champ ou s'il s'agit d'un string ou encore Timestamp
-                if(field.getType().isPrimitive() || field.getType().isInstance(new Timestamp(System.currentTimeMillis()))) {
-
-                    int colonne = resultatQuery.findColumn(field.getName());
-                    field.set(bean, resultatQuery.getObject(colonne));
-                }
-            }
-
-            String nomID = beanClass.getAnnotation(Bean.class).primaryKey();//on veut populer le nom de l'id
-            Field id = beanClass.getDeclaredField(nomID);//on recupere un champ qui represente l'id de la classe courante
-
-            id.setAccessible(true);
-=======
                 String nomID = beanClass.getAnnotation(Bean.class).primaryKey();//on veut populer le nom de l'id
                 Field id = beanClass.getDeclaredField(nomID);//on recupere un champ qui represente l'id de la classe courante
                 id.setAccessible(true);
->>>>>>> master
 
                 tempBean = VerifierExistence(beanClass, nomID);
                 if (tempBean != null) {    //Vérifie l'existence du bean avec son ID

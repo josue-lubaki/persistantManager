@@ -23,7 +23,6 @@ public class Etudiant {
 
 
     /*********** Constructors **************/
-    public Etudiant(){listeEtudiants.add(this);}
     public Etudiant(String fname, String lname, int age) {
         this.fname = fname;
         this.lname = lname;
@@ -69,14 +68,9 @@ public class Etudiant {
 
     @Override
     public String toString() {
-<<<<<<< HEAD
-        return "Etudiant : " + fname + " " + lname + " a " + age;
-    }
 
-=======
         return "Etudiant : " + etudiantid + " - " + fname + " " + lname + " a " + age;
     }
->>>>>>> master
 }
 
 

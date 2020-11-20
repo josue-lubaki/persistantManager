@@ -51,17 +51,10 @@ public class Inscription {
         this.coursid = coursid;
     }
 
-<<<<<<< HEAD
-
-    @Override
-    public String toString() {
-        return "Inscription : " + inscriptionid + " \t idetudiant: "  + etudiantid + "\t coursid: " + coursid;
-=======
     public Cours getUnCours(){return unCours;}
     public Etudiant getUnEtudiant(){return unEtudiant;}
     @Override
     public String toString() {
         return inscriptionid + " | etudiantid : " + etudiantid + " | coursid : " + coursid;
->>>>>>> master
     }
 }

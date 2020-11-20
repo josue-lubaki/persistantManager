@@ -16,38 +16,23 @@
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
-      <charset value="windows-1252" />
+      <charset value="UTF-8" />
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-<<<<<<< HEAD
-      <connection connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8">
-        <schema name="public" object-types="index, view, function, dataset trigger, constraint, column, sequence, table" />
-=======
-      <connection connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d">
-        <schema name="public" object-types="table, view" />
->>>>>>> master
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-<<<<<<< HEAD
-    <connection id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8">
-      <console name="Connection 1" type="STANDARD" schema="public" session="Main"><![CDATA[From Josue Lubaki to Everyone: (2:27 PM)
- /* Creation Table etudiant */
-=======
     <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d">
-      <console name="Connectivity" type="STANDARD" schema="public" session="Main"><![CDATA[/* Creation Table etudiant */
->>>>>>> master
+      <console name="Connectivity" type="STANDARD" schema="public" session="Main">/* Creation Table etudiant */
 Create table etudiant(
     etudiantid int NOT NULL PRIMARY KEY,
     fname varchar NOT NULL,
     lname varchar NOT NULL,
-    age int NOT NULL CONSTRAINT check_age CHECK (age > 16)
+    age int NOT NULL CONSTRAINT check_age CHECK (age &gt; 16)
 )
 
 /* Creation Table cours */
@@ -67,41 +52,18 @@ Create table inscription(
 )
 
 Insert into etudiant values(101,'Xuyao','Hu',23);
-<<<<<<< HEAD
-Insert into cours values(1, 'concepts avances', 'inf1035', 'cours difficile'); 
-Insert into inscription(inscriptionid, etudiantid,coursid) values(1,101,1);
-Insert into etudiant values(102,'Ismo','coul',21);
-commit
-Insert into inscription(inscriptionid, etudiantid,coursid) values(2,102,1);
-SELECT * FROM etudiant WHERE etudiantid=102]]></console>
-=======
 Insert into cours values (2,'Concept Avances en Object','Java','MATH1013');
 Insert into inscription (inscriptionid,etudiantid,coursid) values (5,103,2);
-SELECT * FROM etudiant WHERE etudiantid = 102;]]></console>
->>>>>>> master
+SELECT * FROM etudiant WHERE etudiantid = 102;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" object-ref="schemas/public/tables/inscription" />
-      <object connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" object-ref="schemas/public/tables/etudiant" />
       <object connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" object-ref="schemas/public/tables/cours" />
+      <object connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" object-ref="schemas/public/tables/inscription" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-<<<<<<< HEAD
-    <connection id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" />
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" dataset="public.cours" active-filter-id="81b804f1-cac7-40df-ac20-9721aafbd9fe">
-      <filter id="81b804f1-cac7-40df-ac20-9721aafbd9fe" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
-    </filter-actions>
-    <filter-actions connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" dataset="public.etudiant" active-filter-id="fae97e33-dd1b-4203-a49a-f8a48674dc85">
-      <filter id="fae97e33-dd1b-4203-a49a-f8a48674dc85" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
-    </filter-actions>
-    <filter-actions connection-id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" dataset="public.inscription" active-filter-id="931a266e-03b5-4a17-bcad-42f2b347319f">
-      <filter id="931a266e-03b5-4a17-bcad-42f2b347319f" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
-=======
     <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
@@ -109,7 +71,6 @@ SELECT * FROM etudiant WHERE etudiantid = 102;]]></console>
     <filter-actions connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" dataset="public.etudiant" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" dataset="public.inscription" active-filter-id="1d88a893-fb42-4eec-bba9-b413cf0e8c4e">
       <filter id="1d88a893-fb42-4eec-bba9-b413cf0e8c4e" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
->>>>>>> master
     </filter-actions>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
@@ -134,21 +95,13 @@ SELECT * FROM etudiant WHERE etudiantid = 102;]]></console>
     <filters />
   </component>
   <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
-    <recently-used-interfaces>
-      <mapping database-type="POSTGRES" interface-id="DEFAULT" />
-    </recently-used-interfaces>
+    <recently-used-interfaces />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-<<<<<<< HEAD
-      <connection id="24efc8af-0ef5-4cd8-9d2f-f7b0c14e90e8" active="true">
-        <database>
-          <name value="Connection 1" />
-=======
       <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" active="true">
         <database>
           <name value="Connectivity" />
->>>>>>> master
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
@@ -162,14 +115,10 @@ SELECT * FROM etudiant WHERE etudiantid = 102;]]></console>
           <database value="postgres" />
           <type value="USER_PASSWORD" />
           <user value="postgres" />
-<<<<<<< HEAD
-          <deprecated-pwd value="dG10Yw==" />
-=======
-          <deprecated-pwd value="SGVyb2Vz" />
->>>>>>> master
+          <deprecated-pwd value="" />
         </database>
         <properties>
-          <auto-commit value="true" />
+          <auto-commit value="false" />
         </properties>
         <ssh-settings>
           <active value="false" />

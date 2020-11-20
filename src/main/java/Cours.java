@@ -19,7 +19,6 @@ public class Cours {
     public ArrayList<Inscription> inscriptions = new ArrayList<>();
 
     /************* Constructors *************/
-    public Cours(){listeCours.add(this);}
     public Cours( String nameCourse, String single, String description){
         this.nameCours = nameCourse;
         this.sigle = single;
@@ -60,15 +59,8 @@ public class Cours {
         this.description = description;
     }
 
-<<<<<<< HEAD
-    /*********** toString ****************/
-    @Override
-    public String toString() {
-        return "Nom du Cours : " + nameCours + "\t sigle: " + sigle + " \t description" + description;
-=======
     @Override
     public String toString() {
         return coursid + " | " + nameCours + " | " + description + " a pour Sigle : " + sigle;
->>>>>>> master
     }
 }
