@@ -12,16 +12,17 @@ public class Inscription {
     private int etudiantid;
     private int coursid;
 
-    @idBeanExterne(idbeanexterne = "coursid")
-    private Cours unCours;
+    @idBeanExterne
+    public Cours unCours;
 
-    @idBeanExterne(idbeanexterne = "etudiantid")
-    private Etudiant unEtudiant;
+    @idBeanExterne
+    public Etudiant unEtudiant;
 
     @Ignore
-    public static List<Inscription> listeInscriptions = new ArrayList<>();
+    public static final ArrayList<Inscription> listeInscriptions = new ArrayList<>();
 
-    /************ Constructor ***********/
+    /************ Constructors ***********/
+    public Inscription(){listeInscriptions.add(this);}
     public Inscription(int etudiantid, int coursid){
 
         this.etudiantid = etudiantid;
@@ -50,9 +51,17 @@ public class Inscription {
         this.coursid = coursid;
     }
 
+<<<<<<< HEAD
 
     @Override
     public String toString() {
         return "Inscription : " + inscriptionid + " \t idetudiant: "  + etudiantid + "\t coursid: " + coursid;
+=======
+    public Cours getUnCours(){return unCours;}
+    public Etudiant getUnEtudiant(){return unEtudiant;}
+    @Override
+    public String toString() {
+        return inscriptionid + " | etudiantid : " + etudiantid + " | coursid : " + coursid;
+>>>>>>> master
     }
 }
