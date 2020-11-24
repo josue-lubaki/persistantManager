@@ -43,8 +43,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImportingDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ImportingDatabase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,10 +122,11 @@
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
     <state x="1945" y="136" key="#xdebugger.XInspectDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605566396764" />
-    <state x="1869" y="248" width="354" height="320" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1605418292124">
-      <screen x="1366" y="0" width="1360" height="768" />
+    <state x="533" y="308" width="377" height="365" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1606254603943">
+      <screen x="0" y="25" width="1440" height="875" />
     </state>
     <state x="1869" y="248" width="354" height="320" key="DBNavigator.ConnectionAuthenticationDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605418292124" />
+    <state x="533" y="308" width="377" height="365" key="DBNavigator.ConnectionAuthenticationDialog/0.25.1440.875@0.25.1440.875" timestamp="1606254603943" />
     <state x="1819" y="83" key="DBNavigator.ConnectionInfoDialog" timestamp="1605389421982">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
@@ -221,11 +220,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
           <line>81</line>
           <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ImportingDatabase.java</url>
-          <line>130</line>
-          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

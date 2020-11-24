@@ -189,4 +189,36 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
     }
 
 
+    public <T> int insert(T bean){
+
+        int nbInsertions = 0;//on retourne un nombre d'insertions
+        String requeteSql = "INSERT INTO ";
+        Class<?> representantBean = bean.getClass();//representant de la classe bean
+        String tableBean = representantBean.getAnnotation(Bean.class).table();// on recupere la table du bean
+        String primaryKeyName = representantBean.getAnnotation(Bean.class).primaryKey();//de meme pour la cle primaire
+
+        requeteSql += tableBean + getNomCol(bean, primaryKeyName) + "VALUES (";
+
+
+
+    }
+
+    private <T> String getNomCol(T bean, String primaryKeyName) {//methode pour obtenir le nom de colonne de la table ou on veut
+        //inserer nos valeurs
+
+        String nomCol = " (";
+        Field[] fields = bean.getClass().getDeclaredFields();
+
+        for(Field field: fields){
+            if(field.getAnnotations().length == 0 && !field.getName().equals(primaryKeyName) && (
+                field.getType().isPrimitive() ||  field.getType().isInstance(new String()) ))
+                nomCol += field.getName() + ", "; // on ajoute le nom du champ tant que ce n'est pas une cle primaire
+        }
+
+        nomCol = nomCol.substring(0, nomCol.length()-2) + ") ";// on enleve l'affichage de la virgule a la fin pour mettre une parenthese
+        return nomCol;
+
+    }
+
+
 }
