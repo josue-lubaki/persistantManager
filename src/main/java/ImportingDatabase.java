@@ -198,8 +198,26 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         String primaryKeyName = representantBean.getAnnotation(Bean.class).primaryKey();//de meme pour la cle primaire
 
         requeteSql += tableBean + getNomCol(bean, primaryKeyName) + "VALUES (";
+        Field [] fields = representantBean.getDeclaredFields();
+        Annotation annotation;
+        for(Field field: fields){
+            field.setAccessible(true);
+            if (!field.getName().equals(primaryKeyName)&&(field.getType().isPrimitive() || field.getType.isInstance(new String()))){
+                requeteSql += "'" + field.get(bean)+ "'，"；
+                
+			}
+		}
+        requeteSql = requeteSql.substring(0,requeteSql.length()-2)+") returning " + primaryKeyName;
+        System.out.println("sql: "+requeteSql);
+        Statement statement = con.createStatement();
+        statement.execute(requeteSql);
+        ResultSet resultats= statement.getResultSet();
+        if (resultats.next()){
+            setValClePrimaire(bean, primaryKeyName, resultats.getInt(1));
+		}
 
-
+        statement.close();
+        nbInsertions++;
 
     }
 
@@ -220,5 +238,17 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
 
     }
 
+
+    private <T> void setValClePrimaire (T bean, String primaryKeyName,int primaryKeyNameValue){
+        Field[] fields =  bean.getClass().getDeclaredFields();
+
+        for(Field field: fields){
+            if(field.getName().equals(primaryKeyName)){
+                field.setAccessible(true);
+                field.setInt(bean,primaryKeyNameValue);
+			}
+
+        }
+	}
 
 }
