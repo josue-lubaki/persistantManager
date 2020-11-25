@@ -219,6 +219,21 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         statement.close();
         nbInsertions++;
 
+        for(Field field: fields){
+            if(field.getAnnotation().length != 0 ){
+                annotation = field.getAnnotations()[0];
+                if(annotation instanceof Ignore)
+                    continue;
+                if(annotation instanceof BeanList)
+                    nbInsertions += bulkInsert((List<T>)field.get(bean));
+                else if (annotation instanceof idBeanExterne && field.get(bean) != null){
+                    if(!VerifierExistence(field.get(bean)))
+                        nbInsertions += insert(field.get(bean))  
+                }    
+            }
+        }
+        return nbInsertions;
+
     }
 
     private <T> String getNomCol(T bean, String primaryKeyName) {//methode pour obtenir le nom de colonne de la table ou on veut
@@ -249,6 +264,20 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
 			}
 
         }
-	}
+    }
+    
+
+    private <T> bool VerifierExistence(T bean){
+
+        String nomClePrimaire = bewan.getClass().getAnnotation(Bean.class).primaryKey();
+        Field[] fields =  bean.getClass().getDeclaredFields();
+
+        for(Field field: fields){
+            if(field.getName().equals(primaryKey)){
+                field.setAccessible(true);
+                return field.getInt(bean) != 0;
+            }
+        }
+    }
 
 }
