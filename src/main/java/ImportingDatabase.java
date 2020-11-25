@@ -202,7 +202,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         Annotation annotation;
         for(Field field: fields){
             field.setAccessible(true);
-            if (!field.getName().equals(primaryKeyName)&&(field.getType().isPrimitive() || field.getType.isInstance(new String()))){
+            if (!field.getName().equals(primaryKeyName)&&(field.getType().isPrimitive() || field.getType().isInstance(new String()))){
                 requeteSql += "'" + field.get(bean)+ "'，"；
                 
 			}
@@ -228,13 +228,26 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                     nbInsertions += bulkInsert((List<T>)field.get(bean));
                 else if (annotation instanceof idBeanExterne && field.get(bean) != null){
                     if(!VerifierExistence(field.get(bean)))
-                        nbInsertions += insert(field.get(bean))  
+                        nbInsertions += insert(field.get(bean));
                 }    
             }
         }
         return nbInsertions;
 
     }
+
+
+    public <T> int bulkInsert(List<T> listeBeans){
+
+        int nbInsertions = 0;
+        for(T bean : listeBeans){
+            if(!VerifierExistence(bean))
+                nbInsertions += insert(bean);
+        }
+
+        return nbInsertions;
+    }
+
 
     private <T> String getNomCol(T bean, String primaryKeyName) {//methode pour obtenir le nom de colonne de la table ou on veut
         //inserer nos valeurs
@@ -267,7 +280,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
     }
     
 
-    private <T> bool VerifierExistence(T bean){
+    private <T> boolean VerifierExistence(T bean){
 
         String nomClePrimaire = bewan.getClass().getAnnotation(Bean.class).primaryKey();
         Field[] fields =  bean.getClass().getDeclaredFields();
