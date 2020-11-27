@@ -1,4 +1,5 @@
 import annotations.*;
+import org.postgresql.core.SqlCommand;
 
 import javax.xml.transform.Result;
 import java.lang.annotation.Annotation;
@@ -16,7 +17,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         try {
             String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
             String databaseUserName = "postgres";
-            String databaseUserPassword = "Heroes";
+            String databaseUserPassword = "tmtc";
             con = DriverManager.getConnection(databaseURL, databaseUserName, databaseUserPassword);
             System.out.println("Connection completed");
         } catch (SQLException s) {
@@ -35,7 +36,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         }
     }
 
-    public <T> List<T> retrieveSet(Class<T> beanClass, String sql) {
+    public <T> List<T> retrieveSet(Class<T> beanClass, String sql) throws CustomAccessException{
 
         // initialisation d'une liste
         ArrayList<T> list = new ArrayList<>();
@@ -61,7 +62,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             while (resultatQuery.next()) {
                 try {
                     bean = beanClass.newInstance();//on instancie un objet
-                } catch (IllegalAccessException | InstantiationException errorInstance) {
+                } catch (InstantiationException errorInstance) {
                     System.out.println("Impossible de créer une nouvelle instance de " + beanClass.getSimpleName() + "\n");
                     errorInstance.printStackTrace();
                 }
@@ -131,28 +132,36 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             System.out.println("Desolé, la Connexion à la Base de donnée n'a pas pu être établie\n");
             e.printStackTrace();
             return null;
-        } catch (IllegalAccessException | NoSuchFieldException e) {
+        } catch ( IllegalAccessException | NoSuchFieldException e) {
             System.out.println("Impossible d'accèder à " + beanClass.getDeclaredFields().getClass().getName() + "\n");
             e.printStackTrace();
             return null;
         }
     }
 
-    private static <T> T VerifierExistence(Class<T> beanClass, String unID) {
+    private static <T> T VerifierExistence(Class<T> beanClass, String unID) throws CustomAccessException, IllegalAccessException {
         String nomID = null;//on declare le nom de la liste de l'id qu'on veut recuperer
         String nomFieldList = null;//on declare le nom de la liste de field qu'on veut recuperer
-
+        Field fieldList = null;
         try {
             nomID = beanClass.getAnnotation(Bean.class).primaryKey();
             Field id = beanClass.getDeclaredField(nomID);
             id.setAccessible(true);
 
-            //on recupere la liste listMyinstance() via les annotations
+            //on recuperes la liste listMyinstance() via les annotations
             nomFieldList = beanClass.getAnnotation(Bean.class).listMyInstance();
-            Field fieldList = beanClass.getDeclaredField(nomFieldList);
+            fieldList = beanClass.getDeclaredField(nomFieldList);
             fieldList.setAccessible(true);
 
+        } catch (NoSuchFieldException e) {
+            System.out.println("Le representant de " + nomID + " n'existe pas");
+            e.printStackTrace();
+
+
+        }
+
             ArrayList<T> uneListe = (ArrayList<T>) fieldList.get(null);
+
             //System.out.println("--->TEST : " + beanClass.getSimpleName() + " " + unID);
 
             for (T bean : uneListe) {
@@ -162,17 +171,10 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                     return bean;
                 }
             }
+
             uneListe = new ArrayList<>();
+
             return null;
-        } catch (NoSuchFieldException e) {
-            System.out.println("Le representant de " + nomID + " n'existe pas");
-            e.printStackTrace();
-            return null;
-        } catch (IllegalAccessException e) {
-            System.out.println("Le representant de" + nomFieldList + " n'existe pas");
-            e.printStackTrace();
-            return null;
-        }
     }
 
 
@@ -191,11 +193,15 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             field.setAccessible(true);
             if (field.getName().equals(primaryKeyName) || (field.getType().isPrimitive()
                     || field.getType().isInstance(new String()))) {
-                try {
-                    if(field.get(bean) instanceof Integer)
+                try{
+                    if(field.get(bean) instanceof Integer) {
                         requeteSql += field.get(bean) + ", ";
-                    else
+
+                    }
+                    else {
                         requeteSql += "'" + field.get(bean) + "', ";
+
+                    }
                 } catch (IllegalAccessException e) {
                     System.out.println("Impossible d'accéder au " + field.getName() + " du bean "
                             + tableBean);
@@ -243,16 +249,17 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
     }
 
 
-    public <T> int bulkInsert(List<T> listeBeans) throws SQLException {
+    public <T> int bulkInsert(List<T> listeBeans) throws SQLException, IllegalAccessException {
         int nbInsertions = 0;
         for (T bean : listeBeans) {
-            if (!VerifierExistence(bean))
+            if (!VerifierExistence(bean)) {
                 nbInsertions += insert(bean);
+            }
         }
         return nbInsertions;
     }
 
-    public int ObtenirIndexActuel(String nameSequence) throws SQLException{
+    public int ObtenirIndexActuel(String nameSequence) throws CustomAccessException, SQLException {
         Statement statement = con.createStatement();
         statement.execute("SELECT nextval('" + nameSequence + "'::regclass)");
         ResultSet rs = statement.getResultSet();
@@ -260,7 +267,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             int numeroSuivant = rs.getInt(1) + 1;
             return numeroSuivant;
         }
-        throw new SQLException("Impossible de récupérer l'index courant : " + nameSequence);
+        throw new CustomAccessException("Impossible de récupérer l'index courant : " + nameSequence);
     }
 
 
@@ -280,36 +287,35 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
     }
 
 
-    private <T> void setValClePrimaire(T bean, String primaryKeyName, int primaryKeyNameValue) {
+    private <T> void setValClePrimaire(T bean, String primaryKeyName, int primaryKeyNameValue) throws IllegalAccessException {
         Field[] fields = bean.getClass().getDeclaredFields();
-        try {
+        //try {
             for (Field field : fields) {
                 if (field.getName().equals(primaryKeyName)) {
                     field.setAccessible(true);
                     field.setInt(bean, primaryKeyNameValue);
+                    throw new CustomAccessException("Impossible d'insérer " + primaryKeyNameValue + " dans "
+                            + primaryKeyName + " du Bean " + bean.getClass().getAnnotation(Bean.class).table());
                 }
             }
-        } catch (IllegalAccessException e) {
+        /*} catch (IllegalAccessException e) {
             System.out.println("Impossible d'insérer " + primaryKeyNameValue + " dans "
                     + primaryKeyName + " du Bean " + bean.getClass().getAnnotation(Bean.class).table());
-        }
+        }*/
     }
 
 
-    private <T> boolean VerifierExistence(T bean) {
+    private <T> boolean VerifierExistence(T bean) throws IllegalAccessException {
         String nomClePrimaire = bean.getClass().getAnnotation(Bean.class).primaryKey();
         Field[] fields = bean.getClass().getDeclaredFields();
         for (Field field : fields) {
             if (field.getName().equals(nomClePrimaire)) {
                 field.setAccessible(true);
-                try {
-                    return field.getInt(bean) == 0;
-                } catch (IllegalAccessException e) {
-                    System.out.println("Le Champ correspondant à " + nomClePrimaire + " est introuvable");
-                }
+                return  (field.getInt(bean)== 0);
             }
         }
-        return false;
+        throw new CustomAccessException("Le Champ correspondant à " + nomClePrimaire + " est introuvable");
+
     }
 
 }

@@ -11,7 +11,7 @@ public class Main {
     private static Scanner scan = new Scanner(System.in);
     private static Scanner chiffre = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CustomAccessException {
 
 
         int monChoix = 0;
@@ -50,7 +50,7 @@ public class Main {
     }
 
     /* Methode Affichant le Menu pour Permettre de Recueillir les Données */
-    private static void ConsultationDonnees() {
+    private static void ConsultationDonnees() throws CustomAccessException {
         System.out.println("Patientez pendant que nous vous connectons à la Base de données...");
         // Se connecter à la Base de Donnée
         ImportingDatabase uneConnexion = new ImportingDatabase();//on cree une instance nommée uneConnexion
@@ -148,7 +148,7 @@ public class Main {
         int nextIndex = uneConnexion.ObtenirIndexActuel("etudiant_seqs");
         etudiant.setEtudiantid(nextIndex);
         ArrayList<Inscription> inscriptions = new ArrayList<>();
-        inscriptions.add(new Inscription(uneConnexion.ObtenirIndexActuel("inscription_seqs"),nextIndex, 2));
+        //inscriptions.add(new Inscription(uneConnexion.ObtenirIndexActuel("inscription_seqs"),nextIndex, 2));
         inscriptions.add(new Inscription(uneConnexion.ObtenirIndexActuel("inscription_seqs"),nextIndex, 1));
         etudiant.setInscriptions(inscriptions);
 
