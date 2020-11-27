@@ -3,6 +3,7 @@ import org.postgresql.util.PSQLException;
 import java.sql.SQLException;
 
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,7 +31,14 @@ public class Main {
                 monChoix = 0 ;
             }
             else if (monChoix == 2) {
-                ConsultationDonnees(); // TODO : à modifier pour le remplacer par L'Insertion
+                try {
+                    testInsert();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    System.out.println("Problème survenue au niveau de testInsert()");
+                    e.printStackTrace();
+                }
                 monChoix = 0 ;
             }
             else if (monChoix == 3) {
@@ -42,7 +50,7 @@ public class Main {
     }
 
     /* Methode Affichant le Menu pour Permettre de Recueillir les Données */
-    public static void ConsultationDonnees() {
+    private static void ConsultationDonnees() {
         System.out.println("Patientez pendant que nous vous connectons à la Base de données...");
         // Se connecter à la Base de Donnée
         ImportingDatabase uneConnexion = new ImportingDatabase();//on cree une instance nommée uneConnexion
@@ -130,4 +138,27 @@ public class Main {
 
     uneConnexion.close();
     }
+
+    private static void testInsert() throws SQLException, IllegalArgumentException, IllegalAccessException {
+        System.out.println("Patientez pendant que nous vous connectons à la Base de données...");
+        // Se connecter à la Base de Donnée
+        ImportingDatabase uneConnexion = new ImportingDatabase();//on cree une instance nommée uneConnexion
+        uneConnexion.connect();
+        Etudiant etudiant = new Etudiant("Kevin", "Bruel", 20);
+        int nextIndex = uneConnexion.ObtenirIndexActuel("etudiant_seqs");
+        etudiant.setEtudiantid(nextIndex);
+        ArrayList<Inscription> inscriptions = new ArrayList<>();
+        inscriptions.add(new Inscription(uneConnexion.ObtenirIndexActuel("inscription_seqs"),nextIndex, 2));
+        inscriptions.add(new Inscription(uneConnexion.ObtenirIndexActuel("inscription_seqs"),nextIndex, 1));
+        etudiant.setInscriptions(inscriptions);
+
+        int insertCompleted = 0;
+        insertCompleted = uneConnexion.insert(etudiant);
+        if(insertCompleted > 0)
+            System.out.println("L'étudiant Kevin a été ajouté avec succès !");
+        else
+            System.out.println("0 ligne inserée !");
+        uneConnexion.close();
+    }
+
 }

@@ -23,8 +23,8 @@ public class Inscription {
 
     /************ Constructors ***********/
     public Inscription(){listeInscriptions.add(this);}
-    public Inscription(int etudiantid, int coursid){
-
+    public Inscription(int inscriptionid, int etudiantid, int coursid){
+        this.inscriptionid = inscriptionid;
         this.etudiantid = etudiantid;
         this.coursid = coursid;
         listeInscriptions.add(this);

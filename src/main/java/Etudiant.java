@@ -42,6 +42,10 @@ public class Etudiant {
         return etudiantid;
     }
 
+    public void setEtudiantid(int etudiantid) {
+        this.etudiantid = etudiantid;
+    }
+
     public String getFname() {
         return fname;
     }
@@ -64,6 +68,14 @@ public class Etudiant {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public ArrayList<Inscription> getInscriptions() {
+        return inscriptions;
+    }
+
+    public void setInscriptions(ArrayList<Inscription> inscriptions) {
+        this.inscriptions = inscriptions;
     }
 
     @Override

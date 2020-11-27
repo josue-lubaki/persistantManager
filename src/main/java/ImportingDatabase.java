@@ -1,5 +1,6 @@
 import annotations.*;
 
+import javax.xml.transform.Result;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -15,7 +16,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         try {
             String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
             String databaseUserName = "postgres";
-            String databaseUserPassword = "tmtc";
+            String databaseUserPassword = "Heroes";
             con = DriverManager.getConnection(databaseURL, databaseUserName, databaseUserPassword);
             System.out.println("Connection completed");
         } catch (SQLException s) {
@@ -157,6 +158,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             for (T bean : uneListe) {
                 if (bean.getClass().getAnnotation(Bean.class).primaryKey().equals(unID)) { // TODO : Condition pas assez Cohérente
                     //System.out.println("---->ID :" + unID + " existe deja");
+                    uneListe = new ArrayList<>();
                     return bean;
                 }
             }
@@ -174,7 +176,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
     }
 
 
-    public <T> int insert(T bean) {
+    public <T> int insert(T bean) throws SQLException {
 
         int nbInsertions = 0;//on retourne un nombre d'insertions
         String requeteSql = "INSERT INTO ";
@@ -187,10 +189,13 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         Annotation annotation;
         for (Field field : fields) {
             field.setAccessible(true);
-            if (!field.getName().equals(primaryKeyName) && (field.getType().isPrimitive()
+            if (field.getName().equals(primaryKeyName) || (field.getType().isPrimitive()
                     || field.getType().isInstance(new String()))) {
                 try {
-                    requeteSql += "'" + field.get(bean) + "', ";
+                    if(field.get(bean) instanceof Integer)
+                        requeteSql += field.get(bean) + ", ";
+                    else
+                        requeteSql += "'" + field.get(bean) + "', ";
                 } catch (IllegalAccessException e) {
                     System.out.println("Impossible d'accéder au " + field.getName() + " du bean "
                             + tableBean);
@@ -198,33 +203,15 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
                 }
             }
         }
-        requeteSql = requeteSql.substring(0, requeteSql.length() - 2) + ") RETURNING " + primaryKeyName;
+        requeteSql = requeteSql.substring(0, requeteSql.length() - 2) + ")";
         System.out.println("SQL : " + requeteSql);
-        Statement statement = null;
-        ResultSet resultats = null;
-        try {
-            statement = con.createStatement();
-            statement.execute(requeteSql);
-            resultats = statement.getResultSet();
-        } catch (SQLException e) {
-            System.out.println("Erreur au niveau de la création ou Execution de la Requête SQL");
-            e.printStackTrace();
-        }
 
+        Statement stat = con.createStatement();
+        stat.execute(requeteSql);
+        ResultSet resultats = stat.getResultSet();
 
         try {
-            assert resultats != null;
-            if (resultats.next()) {
-                setValClePrimaire(bean, primaryKeyName, resultats.getInt(1));
-            }
-        } catch (SQLException e) {
-            System.out.println("Impossible de faire correspondre " + primaryKeyName + " du bean "
-                    + tableBean + " à la première colonne du Resultat de la Requête");
-            e.printStackTrace();
-        }
-
-        try {
-            statement.close();
+            stat.close();
         } catch (SQLException e) {
             System.out.println("Impossible de fermer la requête SQL");
             e.printStackTrace();
@@ -256,13 +243,24 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
     }
 
 
-    public <T> int bulkInsert(List<T> listeBeans) {
+    public <T> int bulkInsert(List<T> listeBeans) throws SQLException {
         int nbInsertions = 0;
         for (T bean : listeBeans) {
             if (!VerifierExistence(bean))
                 nbInsertions += insert(bean);
         }
         return nbInsertions;
+    }
+
+    public int ObtenirIndexActuel(String nameSequence) throws SQLException{
+        Statement statement = con.createStatement();
+        statement.execute("SELECT nextval('" + nameSequence + "'::regclass)");
+        ResultSet rs = statement.getResultSet();
+        if (rs.next()) {
+            int numeroSuivant = rs.getInt(1) + 1;
+            return numeroSuivant;
+        }
+        throw new SQLException("Impossible de récupérer l'index courant : " + nameSequence);
     }
 
 
@@ -273,7 +271,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         Field[] fields = bean.getClass().getDeclaredFields();
 
         for (Field field : fields) {
-            if (field.getAnnotations().length == 0 && !field.getName().equals(primaryKeyName) && (
+            if (field.getAnnotations().length == 0 && field.getName().equals(primaryKeyName) || (
                     field.getType().isPrimitive() || field.getType().isInstance(new String())))
                 nomCol += field.getName() + ", "; // on ajoute le nom du champ tant que ce n'est pas une cle primaire
         }
@@ -305,7 +303,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             if (field.getName().equals(nomClePrimaire)) {
                 field.setAccessible(true);
                 try {
-                    return field.getInt(bean) != 0;
+                    return field.getInt(bean) == 0;
                 } catch (IllegalAccessException e) {
                     System.out.println("Le Champ correspondant à " + nomClePrimaire + " est introuvable");
                 }
