@@ -1,7 +1,5 @@
 import annotations.*;
-import org.postgresql.core.SqlCommand;
 
-import javax.xml.transform.Result;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -13,16 +11,17 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
 
     private Connection con = null;
 
-    public void connect() {
+    public ImportingDatabase connect() {
         try {
             String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
             String databaseUserName = "postgres";
-            String databaseUserPassword = "tmtc";
+            String databaseUserPassword = "Heroes";
             con = DriverManager.getConnection(databaseURL, databaseUserName, databaseUserPassword);
             System.out.println("Connection completed");
         } catch (SQLException s) {
             System.out.println("Echec de la connexion : " + s.getMessage());
         }
+        return null;
     }
 
     public void close() {
@@ -167,7 +166,6 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
             for (T bean : uneListe) {
                 if (bean.getClass().getAnnotation(Bean.class).primaryKey().equals(unID)) { // TODO : Condition pas assez Cohérente
                     //System.out.println("---->ID :" + unID + " existe deja");
-                    uneListe = new ArrayList<>();
                     return bean;
                 }
             }
@@ -259,7 +257,7 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         return nbInsertions;
     }
 
-    public int ObtenirIndexActuel(String nameSequence) throws CustomAccessException, SQLException {
+    public int ObtenirIndexSuivant(String nameSequence) throws CustomAccessException, SQLException {
         Statement statement = con.createStatement();
         statement.execute("SELECT nextval('" + nameSequence + "'::regclass)");
         ResultSet rs = statement.getResultSet();
@@ -270,6 +268,10 @@ public class ImportingDatabase {// cette classe permet de faire l'importation de
         throw new CustomAccessException("Impossible de récupérer l'index courant : " + nameSequence);
     }
 
+    /* OBTENIR LA PROCHAINE VALEUR LIBRE POUR INSERTION DE LA SEQUENCE */
+    public int nextIndexInsert(String nameSequence) throws CustomAccessException, SQLException {
+        return ObtenirIndexSuivant(nameSequence);
+    }
 
     private <T> String getNomCol(T bean, String primaryKeyName) {//methode pour obtenir le nom de colonne de la table ou on veut
         //inserer nos valeurs
