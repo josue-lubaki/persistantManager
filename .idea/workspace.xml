@@ -42,11 +42,6 @@
     <list default="true" id="1cc58660-ab83-40e9-b472-2ed006fc0fce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Etudiant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Etudiant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImportingDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ImportingDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Inscription.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Inscription.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +73,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Tp-2_Resolus/Nicolas_BoisVert/inf1035-2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.27787307" />
@@ -113,7 +108,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -160,10 +167,10 @@
     </state>
     <state width="898" height="534" key="DebuggerActiveHint/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605761179999" />
     <state width="951" height="609" key="DebuggerActiveHint/0.25.1440.875@0.25.1440.875" timestamp="1605911286609" />
-    <state x="1826" y="138" key="FileChooserDialogImpl" timestamp="1605759363809">
+    <state x="1826" y="138" key="FileChooserDialogImpl" timestamp="1606514738646">
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
-    <state x="1826" y="138" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605759363809" />
+    <state x="1826" y="138" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1606514738646" />
     <state width="1398" height="105" key="GridCell.Tab.0.bottom" timestamp="1606511053430">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
