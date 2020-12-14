@@ -1,53 +1,115 @@
 package com.database;
 
 import com.exception.CustomAccessException;
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+
 import java.sql.*;
 
-public class ImportingDatabase {
+public class ImportingDatabase {// cette classe permet de faire l'importation de la base de données
 
-    private Connection con = null;
+    private final ConnectivityChecking entity;
+    private static ImportingDatabase instance;
+    private PreparedStatement statement;
+    private static Connection con;
 
-
-    // Constructor
-    public ImportingDatabase(){
-        this.connect();
+    @Inject
+    public ImportingDatabase(ConnectivityChecking entity) {
+        this.entity = entity;
     }
 
-    public Connection getConnexion() {
+    public static Connection getConnexion() {
         return con;
     }
 
-    public void connect() {
-        try {
-            String databaseURL = "jdbc:postgresql://localhost:5432/postgres";
-            String databaseUserName = "postgres";
-            String databaseUserPassword = "Heroes";
-            con = DriverManager.getConnection(databaseURL, databaseUserName, databaseUserPassword);
-            System.out.println("Connection completed");
-        } catch (SQLException s) {
-            System.out.println("Echec de la connexion : " + s.getMessage());
+    public static ImportingDatabase getInstance() {
+        if (con == null) {
+            Injector inject = Guice.createInjector(new ImportingDatabaseModule());
+            ImportingDatabase.instance = inject.getInstance(ImportingDatabase.class);
+            ImportingDatabase.instance.entity.setLoginConnection(
+                    "postgresql",
+                    "localhost",
+                    "postgres",
+                    "Heroes",
+                    5432,
+                    "postgres");
+        }
+        return instance;
+    }
+
+    public void closeMe() throws SQLException {
+        if (!con.isClosed()) {
+            con.close();
+            con = null;
+            this.statement = null;
         }
     }
 
-    public void close() {
-        if (con != null) {
-            try {
-                con.close();
-                System.out.println("Déconnexion de la Base de données !");
-            } catch (SQLException errorConnexion) {
-                System.out.println("La Connexion n'a pu être établie");
-                errorConnexion.printStackTrace();
-            }
+    public static void disconnect(Connection connexion) throws SQLException {
+        if (connexion != null) {
+            con.close();
+            con = null;
+            instance.entity.resetConnexion();
         }
     }
 
-    public int ObtenirIndexSuivant(String nameSequence) throws CustomAccessException, SQLException {
-        Statement statement = con.createStatement();
-        statement.execute("SELECT nextval('" + nameSequence + "'::regclass)");
-        ResultSet rs = statement.getResultSet();
+    public static int ObtenirIndexSuivant(String nameSequence) throws CustomAccessException, SQLException {
+        ResultSet rs = retrieve("SELECT nextval('" + nameSequence + "'::regclass)");
         if (rs.next()) {
             return rs.getInt(1) + 1;
         }
         throw new CustomAccessException("Impossible de récupérer l'index courant : " + nameSequence);
     }
+
+
+    private void PrepareStatementWithConnexion(String sql) throws SQLException {
+        con = this.entity.getConnection();
+        this.statement = con.prepareStatement(sql);
+    }
+
+    private void PrepareStatementWithoutConnexion(String sql) throws SQLException {
+        this.statement = con.prepareStatement(sql);
+    }
+
+    private ResultSet ExecuteRequete() throws SQLException {
+        this.statement.executeQuery();
+        return this.statement.getResultSet();
+    }
+
+    private int ExecuteInsert(String sql) throws SQLException
+    {
+        VerifyConnexionAndCreateStatement(sql);
+        return this.statement.executeUpdate();
+        //return this.statement.getGeneratedKeys();
+    }
+
+    private ResultSet Execute(String sql) throws SQLException {
+        VerifyConnexionAndCreateStatement(sql);
+
+        // Contrôle d'Option
+        ResultSet resultSet = this.ExecuteRequete();
+
+        //this.closeMe();
+        return resultSet;
+    }
+
+    private void VerifyConnexionAndCreateStatement(String sql) throws SQLException {
+        // Vérifier si la Connexion est toujours maintenue (Si existe)
+        if(con == null)
+            this.PrepareStatementWithConnexion(sql);
+        else
+            this.PrepareStatementWithoutConnexion(sql);
+    }
+
+    // execute avec une manipulation de type SELECT
+    public static ResultSet retrieve(String sql) throws SQLException {
+        return ImportingDatabase.getInstance().Execute(sql);
+    }
+
+    // execute Pour Insertion, Update, delete
+    public static void retrieveInsert(String sql) throws SQLException {
+        ImportingDatabase.getInstance().ExecuteInsert(sql);
+    }
+
 }
