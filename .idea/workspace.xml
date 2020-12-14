@@ -42,6 +42,14 @@
     <list default="true" id="1cc58660-ab83-40e9-b472-2ed006fc0fce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cours.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoursBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoursBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Inscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Inscription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Cours.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Cours.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ImportingDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ImportingDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Inscription.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Inscription.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,11 +148,12 @@
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
     <state x="1945" y="136" key="#xdebugger.XInspectDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605566396764" />
-    <state x="533" y="291" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1606509085202">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="533" y="288" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1607904628859">
+      <screen x="0" y="25" width="1440" height="812" />
     </state>
     <state x="1869" y="248" width="354" height="320" key="DBNavigator.ConnectionAuthenticationDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605418292124" />
     <state x="533" y="291" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog/0.0.1440.900@0.0.1440.900" timestamp="1606509085202" />
+    <state x="533" y="288" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog/0.25.1440.812@0.25.1440.812" timestamp="1607904628859" />
     <state x="533" y="308" width="377" height="365" key="DBNavigator.ConnectionAuthenticationDialog/0.25.1440.875@0.25.1440.875" timestamp="1606254603943" />
     <state x="1819" y="83" key="DBNavigator.ConnectionInfoDialog" timestamp="1605389421982">
       <screen x="1366" y="0" width="1360" height="768" />
@@ -171,49 +180,57 @@
       <screen x="1366" y="0" width="1360" height="768" />
     </state>
     <state x="1826" y="138" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1606514738646" />
-    <state width="1398" height="105" key="GridCell.Tab.0.bottom" timestamp="1606511053430">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="248" key="GridCell.Tab.0.bottom" timestamp="1607909056672">
+      <screen x="0" y="25" width="1440" height="812" />
     </state>
     <state width="1317" height="373" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893288" />
     <state width="1398" height="105" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1606511053430" />
+    <state width="1398" height="248" key="GridCell.Tab.0.bottom/0.25.1440.812@0.25.1440.812" timestamp="1607909056672" />
     <state width="1398" height="358" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1605912666929" />
-    <state width="1398" height="105" key="GridCell.Tab.0.center" timestamp="1606511053429">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="248" key="GridCell.Tab.0.center" timestamp="1607909056671">
+      <screen x="0" y="25" width="1440" height="812" />
     </state>
     <state width="1317" height="373" key="GridCell.Tab.0.center/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
     <state width="1398" height="105" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1606511053429" />
+    <state width="1398" height="248" key="GridCell.Tab.0.center/0.25.1440.812@0.25.1440.812" timestamp="1607909056671" />
     <state width="1398" height="358" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1605912666928" />
-    <state width="1398" height="105" key="GridCell.Tab.0.left" timestamp="1606511053428">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="248" key="GridCell.Tab.0.left" timestamp="1607909056671">
+      <screen x="0" y="25" width="1440" height="812" />
     </state>
     <state width="1317" height="373" key="GridCell.Tab.0.left/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
     <state width="1398" height="105" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1606511053428" />
+    <state width="1398" height="248" key="GridCell.Tab.0.left/0.25.1440.812@0.25.1440.812" timestamp="1607909056671" />
     <state width="1398" height="358" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1605912666928" />
-    <state width="1398" height="105" key="GridCell.Tab.0.right" timestamp="1606511053429">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="248" key="GridCell.Tab.0.right" timestamp="1607909056672">
+      <screen x="0" y="25" width="1440" height="812" />
     </state>
     <state width="1317" height="373" key="GridCell.Tab.0.right/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893288" />
     <state width="1398" height="105" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1606511053429" />
+    <state width="1398" height="248" key="GridCell.Tab.0.right/0.25.1440.812@0.25.1440.812" timestamp="1607909056672" />
     <state width="1398" height="358" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1605912666929" />
-    <state width="1398" height="358" key="GridCell.Tab.1.bottom" timestamp="1605912666930">
-      <screen x="0" y="25" width="1440" height="875" />
+    <state width="1398" height="248" key="GridCell.Tab.1.bottom" timestamp="1607909056675">
+      <screen x="0" y="25" width="1440" height="812" />
     </state>
     <state width="1317" height="396" key="GridCell.Tab.1.bottom/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
+    <state width="1398" height="248" key="GridCell.Tab.1.bottom/0.25.1440.812@0.25.1440.812" timestamp="1607909056675" />
     <state width="1398" height="358" key="GridCell.Tab.1.bottom/0.25.1440.875@0.25.1440.875" timestamp="1605912666930" />
-    <state width="1398" height="358" key="GridCell.Tab.1.center" timestamp="1605912666930">
-      <screen x="0" y="25" width="1440" height="875" />
+    <state width="1398" height="248" key="GridCell.Tab.1.center" timestamp="1607909056674">
+      <screen x="0" y="25" width="1440" height="812" />
     </state>
     <state width="1317" height="396" key="GridCell.Tab.1.center/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
+    <state width="1398" height="248" key="GridCell.Tab.1.center/0.25.1440.812@0.25.1440.812" timestamp="1607909056674" />
     <state width="1398" height="358" key="GridCell.Tab.1.center/0.25.1440.875@0.25.1440.875" timestamp="1605912666930" />
-    <state width="1398" height="358" key="GridCell.Tab.1.left" timestamp="1605912666930">
-      <screen x="0" y="25" width="1440" height="875" />
+    <state width="1398" height="248" key="GridCell.Tab.1.left" timestamp="1607909056673">
+      <screen x="0" y="25" width="1440" height="812" />
     </state>
     <state width="1317" height="396" key="GridCell.Tab.1.left/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
+    <state width="1398" height="248" key="GridCell.Tab.1.left/0.25.1440.812@0.25.1440.812" timestamp="1607909056673" />
     <state width="1398" height="358" key="GridCell.Tab.1.left/0.25.1440.875@0.25.1440.875" timestamp="1605912666930" />
-    <state width="1398" height="358" key="GridCell.Tab.1.right" timestamp="1605912666930">
-      <screen x="0" y="25" width="1440" height="875" />
+    <state width="1398" height="248" key="GridCell.Tab.1.right" timestamp="1607909056674">
+      <screen x="0" y="25" width="1440" height="812" />
     </state>
     <state width="1317" height="396" key="GridCell.Tab.1.right/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
+    <state width="1398" height="248" key="GridCell.Tab.1.right/0.25.1440.812@0.25.1440.812" timestamp="1607909056674" />
     <state width="1398" height="358" key="GridCell.Tab.1.right/0.25.1440.875@0.25.1440.875" timestamp="1605912666930" />
     <state x="1547" y="28" key="SettingsEditor" timestamp="1605755590988">
       <screen x="1366" y="0" width="1360" height="768" />
@@ -239,6 +256,37 @@
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="34" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ImportingDatabase.java</url>
+          <line>213</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
+          <line>211</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
+          <line>271</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/CoursBuilder.java</url>
+          <line>42</line>
+          <properties class="CoursBuilder" method="creation">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/ImportingDatabase.java</url>
+          <line>271</line>
+          <properties class="ImportingDatabase" method="nextIndexInsert">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
