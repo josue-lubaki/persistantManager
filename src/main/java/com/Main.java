@@ -3,7 +3,6 @@ package com;
 import com.bean.*;
 import com.database.ImportingDatabase;
 import com.persistance.PersistantManager;
-import com.sun.xml.internal.ws.wsdl.writer.document.Import;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -22,9 +21,11 @@ public class Main {
         int monChoix;
         do {
             System.out.println("******************************************************************");
-            System.out.println("\t\t\tMENU PRINCIPALE\n\t\t\t---------------\n" +
-                    " Tapez le chiffre qui correspond à votre action :");
-            System.out.println("1. Obtenir les Données Venant de la Base des Données\n" +
+            System.out.println("\t\t\t╔═════════════════════╗");
+            System.out.println("\t\t\t║ \tMENU PRINCIPALE   ║");
+            System.out.println("\t\t\t╚═════════════════════╝");
+            System.out.println(" Tapez le chiffre qui correspond à votre action : \n" +
+                    "1. Obtenir les Données Venant de la Base des Données\n" +
                     "2. Entrer une nouvelle donnée dans la Base de Données\n" +
                     "3. Quitter");
             monChoix = chiffre.nextInt();
@@ -36,6 +37,7 @@ public class Main {
                 else if (monChoix == 3) {
                     chiffre.close();
                     scan.close();
+                    copyright();
                     System.exit(0);
                 }
             } catch (SQLException throwables) {
@@ -57,7 +59,9 @@ public class Main {
      *****************************************************************************************************/
     private static void MenuConsultationDonnees() throws SQLException, IllegalAccessException, InstantiationException {
         System.out.println("******************************************************************");
-        System.out.println("\t\t\tRECUPERATION DONNEES");
+        System.out.println("\t\t\t╔══════════════════════════╗");
+        System.out.println("\t\t\t║ \tRECUPERATION DONNEES   ║");
+        System.out.println("\t\t\t╚══════════════════════════╝");
         int choixUser;
         String decision;
         do {
@@ -78,8 +82,9 @@ public class Main {
                 case 1: {
                     System.out.println("******************************************************************");
                     System.out.println("\t\tListe de tous les Etudiants\n\t\t---------------------------");
+                    System.out.println("Recupération de tous les étudiants en cours d'exécution...");
                     listing(Objects.requireNonNull(PersistantManager
-                            .retrieveSet(Etudiant.class, "SELECT * FROM etudiant")));
+                            .retrieveSet(Etudiant.class, ImportingDatabase.GET_ALL_STUDENT)));
                     System.out.println("******************************************************************");
                     break;
                 }
@@ -87,31 +92,32 @@ public class Main {
                     System.out.println("******************************************************************");
                     int idEtudiant = prompt("Entrer l'ID de l'étudiant");
                     listing(Objects.requireNonNull(PersistantManager
-                            .retrieveSet(Etudiant.class, "SELECT * FROM etudiant WHERE etudiantid = " + idEtudiant)));
+                            .retrieveSet(Etudiant.class, ImportingDatabase.GET_SPECIFIC_STUDENT(idEtudiant))));
                     System.out.println("******************************************************************");
                     break;
                 }
                 case 3: {
                     System.out.println("******************************************************************");
-                    System.out.println("\t\tListe de tous les com.bean.Cours\n\t\t-----------------------");
+                    System.out.println("\t\tListe de tous les Cours\n\t\t-----------------------");
                     listing(Objects.requireNonNull(PersistantManager
-                            .retrieveSet(Cours.class, "SELECT * FROM cours")));
+                            .retrieveSet(Cours.class, ImportingDatabase.GET_ALL_COURSE)));
                     System.out.println("******************************************************************");
                     break;
                 }
                 case 4: {
                     System.out.println("******************************************************************");
-                    int idCours = prompt("Entrer l'ID du com.bean.Cours");
+                    int idCours = prompt("Entrer l'ID du Cours");
                     listing(Objects.requireNonNull(PersistantManager
-                            .retrieveSet(Cours.class, "SELECT * FROM cours WHERE coursid = " + idCours)));
+                            .retrieveSet(Cours.class, ImportingDatabase.GET_SPECIFIC_COURSE(idCours))));
                     System.out.println("******************************************************************");
                     break;
                 }
                 case 5: {
                     System.out.println("******************************************************************");
                     System.out.println("\t\tListe de tous les Inscriptions\n\t\t------------------------------");
+                    System.out.println("Recupération de la liste de tous les inscriptions en cours d'exécution...");
                     listing(Objects.requireNonNull(PersistantManager
-                            .retrieveSet(Inscription.class, "SELECT * FROM inscription")));
+                            .retrieveSet(Inscription.class, ImportingDatabase.GET_ALL_SUBSCRIBE)));
                     System.out.println("******************************************************************");
                     break;
                 }
@@ -119,7 +125,7 @@ public class Main {
                     System.out.println("******************************************************************");
                     int idInscription = prompt("Entrer l'ID de l'inscription");
                     listing(Objects.requireNonNull(PersistantManager
-                            .retrieveSet(Inscription.class, "SELECT * FROM inscription WHERE inscriptionid = " + idInscription)));
+                            .retrieveSet(Inscription.class, ImportingDatabase.GET_SPECIFIC_SUBSCRIBE(idInscription))));
                     System.out.println("******************************************************************");
                     break;
                 }
@@ -159,7 +165,9 @@ public class Main {
      *****************************************************************************************************/
     private static void MenuInsertUpdateData() throws IllegalAccessException, SQLException, InstantiationException {
         System.out.println("******************************************************************");
-        System.out.println("\t\t\tINSERTION ET UPDATE DONNEES");
+        System.out.println("\t\t\t╔═════════════════════════════════╗");
+        System.out.println("\t\t\t║ \tINSERTION ET UPDATE DONNEES   ║");
+        System.out.println("\t\t\t╚═════════════════════════════════╝");
         int choixUser;
         String decision;
         do {
@@ -229,6 +237,7 @@ public class Main {
      * METHODE PERMETTANT DE LISTER LES CONTENUES D'UNE LISTE
      */
     public static <T> void listing(List<T> maListe) {
+        System.out.println("Voici le resultat : ");
         maListe.forEach(System.out::println);
     }
 
@@ -246,4 +255,11 @@ public class Main {
         return Main.scan.nextLine();
     }
 
+    /* Methode Quitter */
+    public static void copyright(){
+        System.out.println("╔═══════════════════════════════════════════════════════╗");
+        System.out.println("║ \tCopyright 2020 - Toute Reproduction Interdite ©     ║");
+        System.out.println("║ @Authors : Josue Lubaki & Ismael Coulibaly & Xuyao Hu ║");
+        System.out.println("╚═══════════════════════════════════════════════════════╝");
+    }
 }

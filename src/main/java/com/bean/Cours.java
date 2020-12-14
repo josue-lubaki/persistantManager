@@ -52,15 +52,29 @@ public class Cours {
     }
 
     /**
-     * METHODE PERMETTANT DE RECHERCHER UN ELEMENT DANS LA LISTE DE COURS
-     * Return true if found element
+     * Methode permettant de s'assurer de l'existence du Cours dans une liste de Cours
+     * @param liste : Liste contenant les cours
+     * @param coursid : correspond au coursid du Cours dont on recherche
+     * @return true if found element
      * */
-    public static boolean isContainedCourse(List<Cours> liste, int unID){
+    public static boolean isContainedCourse(List<Cours> liste, int coursid){
         for (Cours course : liste){
-            if(course.getCoursid() == unID)
+            if(course.getCoursid() == coursid)
                 return true;
         }
         return false;
+    }
+
+    /** Methode permettant d'aller chercher un Cours dans la Liste des Cours
+     * @param liste : Liste contenant les cours
+     * @param coursid : correspond au coursid du Cours dont on recherche
+     * @return Cours
+     * */
+    public static Cours askMeCourse(List<Cours> liste, int coursid){
+        for (Cours e : liste)
+            if(e.getCoursid() == coursid)
+                return e;
+        return null;
     }
 
     @Override

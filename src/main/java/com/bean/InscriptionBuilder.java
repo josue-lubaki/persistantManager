@@ -1,5 +1,6 @@
 package com.bean;
 
+import com.database.ImportingDatabase;
 import com.exception.CustomAccessException;
 import com.Main;
 
@@ -32,6 +33,22 @@ public class InscriptionBuilder {
     }
 
     /**
+     * methode permettant la création d'un Inscription tout en connaissasnt son inscriptiond
+     * @param etudiantid : ID de l'étudiant
+     * @param coursid : ID du Cours
+     * @return Inscription
+     * @throws CustomAccessException si le champs est inaccessible
+     * @throws SQLException s'il y a erreur dans l'accès de la base de données
+     * */
+    public static Inscription creation(int inscriptionid, int etudiantid, int coursid){
+        return new InscriptionBuilder()
+                .setInscriptionid(inscriptionid)
+                .setEtudiantid(etudiantid)
+                .setCoursid(coursid)
+                .build();
+    }
+
+    /**
      * methode permettant la création d'un Inscription avec la bonne valeur de (Inscription) ID venant de la Base de données
      * @param etudiantid : ID de l'étudiant
      * @param coursid : ID du Cours
@@ -40,12 +57,8 @@ public class InscriptionBuilder {
      * @throws SQLException s'il y a erreur dans l'accès de la base de données
      * */
     public static Inscription creation(int etudiantid, int coursid) throws SQLException, CustomAccessException {
-        int idLibre = Main.uneConnexion.ObtenirIndexSuivant("inscription_seqs");
-        return new InscriptionBuilder()
-                .setInscriptionid(idLibre)
-                .setEtudiantid(etudiantid)
-                .setCoursid(coursid)
-                .build();
+        int idLibre = ImportingDatabase.ObtenirIndexSuivant("inscription_seqs");
+        return InscriptionBuilder.creation(idLibre,etudiantid,coursid);
     }
 
 }

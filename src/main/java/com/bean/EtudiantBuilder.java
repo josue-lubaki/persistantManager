@@ -1,7 +1,7 @@
 package com.bean;
 
+import com.database.ImportingDatabase;
 import com.exception.CustomAccessException;
-import com.Main;
 
 import java.sql.SQLException;
 
@@ -37,6 +37,23 @@ public class EtudiantBuilder {
     }
 
     /**
+     * methode permettant la création d'un Etudiant en connaissant son etudiantId
+     * @param etudiantid : l'ID de l'Etudiant
+     * @param fname : le prenom de l'étudiant
+     * @param lname : le nom de l'étudiant
+     * @param age : l'âge de l'étudiant
+     * @return Etudiant
+     * */
+    public static Etudiant creation(int etudiantid, String fname, String lname, int age){
+        return new EtudiantBuilder()
+                .setEtudiantid(etudiantid)
+                .setFname(fname)
+                .setLname(lname)
+                .setAge(age)
+                .build();
+    }
+
+    /**
      * methode permettant la création d'un Etudiant avec la bonne valeur de (etudiantId) ID venant de la Base de données
      * @param fname : le prenom de l'étudiant
      * @param lname : le nom de l'étudiant
@@ -46,13 +63,8 @@ public class EtudiantBuilder {
      * @throws SQLException s'il y a erreur dans l'accès de la base de données
      * */
     public static Etudiant creation(String fname, String lname, int age) throws CustomAccessException, SQLException {
-        int idLibre = Main.uneConnexion.ObtenirIndexSuivant("etudiant_seqs");
-        return new EtudiantBuilder()
-                .setEtudiantid(idLibre)
-                .setFname(fname)
-                .setLname(lname)
-                .setAge(age)
-                .build();
+        int idLibre = ImportingDatabase.ObtenirIndexSuivant("etudiant_seqs");
+        return EtudiantBuilder.creation(idLibre,fname,lname,age);
     }
 
 }

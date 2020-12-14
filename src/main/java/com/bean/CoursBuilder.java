@@ -1,5 +1,6 @@
 package com.bean;
 
+import com.database.ImportingDatabase;
 import com.exception.CustomAccessException;
 import com.Main;
 
@@ -37,6 +38,23 @@ public class CoursBuilder {
     }
 
     /**
+     * methode permettant la création d'un Cours tout en connaissant son coursid
+     * @param coursid : l'ID du cours
+     * @param nameCours : le nom du Cours
+     * @param sigle : le sigle du Cours
+     * @param description : la description du Cours
+     * @return Cours
+     * */
+    public static Cours creation(int coursid, String nameCours, String sigle, String description){
+        return new CoursBuilder()
+                .setCoursid(coursid)
+                .setNameCours(nameCours)
+                .setSigle(sigle)
+                .setDescription(description)
+                .build();
+    }
+
+    /**
      * methode permettant la création d'un Cours avec la bonne valeur de (coursid) ID venant de la Base de données
      * @param nameCours : le nom du Cours
      * @param sigle : le sigle du Cours
@@ -46,12 +64,7 @@ public class CoursBuilder {
      * @throws SQLException s'il y a erreur dans l'accès de la base de données
      * */
     public static Cours creation(String nameCours, String sigle, String description) throws CustomAccessException, SQLException {
-        int idLibre = Main.uneConnexion.ObtenirIndexSuivant("cours_seqs");
-        return new CoursBuilder()
-                .setCoursid(idLibre)
-                .setNameCours(nameCours)
-                .setSigle(sigle)
-                .setDescription(description)
-                .build();
+        int idLibre = ImportingDatabase.ObtenirIndexSuivant("cours_seqs");
+        return CoursBuilder.creation(idLibre,nameCours,sigle,description);
     }
 }

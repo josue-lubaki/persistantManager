@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Connectivity implements ConnectivityChecking{
     private String host;
     private String driver;
-    private String nameBase;
+    private String nameDataBase;
     private int port;
     private String user;
     private String password;
@@ -18,30 +18,18 @@ public class Connectivity implements ConnectivityChecking{
     }
 
     @Override
-    public Connection resetConnexion() {
-        this.driver = null;
-        this.host = null;
-        this.user = null;
-        this.password = null;
-        this.port = 0;
-        this.nameBase = null;
-        return null;
-    }
-
-
-    @Override
     public String getConnectionURL() {
         // Reproduire ce modèle : "jdbc:postgresql://localhost:5432/postgres";
-        return "jdbc:" + driver + "://" + host + ":" + port + "/" + nameBase;
+        return "jdbc:" + driver + "://" + host + ":" + port + "/" + nameDataBase;
     }
 
     @Override
-    public void setLoginConnection(String driver, String host, String user, String password, int port, String nameBase) {
+    public void setLoginConnection(String driver, String host, String user, String password, int port, String nameDataBase) {
         this.driver = driver;
         this.host = host;
         this.user = user;
         this.password = password;
         this.port = port;
-        this.nameBase = nameBase;
+        this.nameDataBase = nameDataBase;
     }
 }

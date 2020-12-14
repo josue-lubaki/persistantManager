@@ -74,6 +74,12 @@ public class PersistantManager {
 
     /**
      * RECUPERATION DES BEANS SIMPLES
+     *
+     * @param record    : bean utilisé dans la recursivité pour accumulé les données au fur et à mesure
+     * @param resultSet : le resultat de la reqûete SQL
+     * @param field     : Le Champs de la bean actuellement évalué
+     * @return void
+     * @throws IllegalAccessException : Impossible d'accéder à un champs
      */
     private static <T> void retrieveSimpleBean(T record, ResultSet resultSet, Field field) throws IllegalAccessException {
         if (field.getAnnotations().length == 0 && field.getType().isPrimitive() || field.getType().isInstance("")) {
@@ -88,6 +94,12 @@ public class PersistantManager {
 
     /**
      * RECUPERATION DES BEANLIST
+     *
+     * @param beanClass : représentant de la classe
+     * @param resultSet : le resultat de la reqûete SQL
+     * @param field     : Le Champs de la bean actuellement évalué
+     * @return void
+     * @throws IllegalAccessException : Impossible d'accéder à un Champs
      */
     private static <T> void retrieveBeanList(Class<T> beanClass, T bean, ResultSet resultSet, Field field) throws IllegalAccessException {
         String className = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0].getTypeName();
@@ -111,7 +123,13 @@ public class PersistantManager {
     }
 
     /**
-     * RECUPERATION DES BEANsEXTERN
+     * RECUPERATION DES BEANsEXTERN (bean de Jointure)
+     *
+     * @param bean      : bean utilisé dans la recursivité pour accumulé les données au fur et à mesure
+     * @param resultSet : le resultat de la reqûete SQL
+     * @param field     : Le Champs de la bean actuellement évalué
+     * @return void
+     * @throws IllegalAccessException : Impossible d'acceder au champs
      */
     private static <T> void retrieveBeanExtern(T bean, ResultSet resultSet, Field field) throws IllegalAccessException {
         try {
@@ -138,8 +156,11 @@ public class PersistantManager {
     }
 
     /**
-     * FONCTION POUR POPULER LE BEAN
+     * Methode permettant de Populer les valeurs dans les champs correspondants
      *
+     * @param beanClass : représentant de la classe
+     * @param list      : La liste qui contient tous les beans de la methode RetrieveSet
+     * @param bean      : Le Champs de la bean actuellement évalué
      * @return void
      */
     private static <T> void populer(Class<T> beanClass, List<T> list, T bean) {
@@ -164,6 +185,16 @@ public class PersistantManager {
         }
     }
 
+    /**
+     * Une methode qui permet de Verifier si la bean existe déjà ou pas
+     * Methode executée dans la RetrieveSet()
+     * Si cette methode n'existe pas, la methode RetrieveSet fonctionnera en loop infini
+     *
+     * @param beanClass : Représentant de la Classe
+     * @param id        : correspond à ID dont on veut connaître l'existence
+     * @return T
+     * @throws IllegalAccessException : Impossible d'acceder au Champs
+     */
     private static <T> T VerifierExistence(Class<T> beanClass, int id) throws IllegalAccessException {
         String nomID = null;//on declare le nom de la liste de l'id qu'on veut recuperer
         Field fieldList = null;
@@ -173,7 +204,7 @@ public class PersistantManager {
             idField = beanClass.getDeclaredField(nomID);
             idField.setAccessible(true);
 
-            //on recuperes la liste listMyinstance() via les com.annotations
+            //on recuperes la liste listMyinstance() via les annotations
             String nomFieldList = beanClass.getAnnotation(Bean.class).listMyInstance();
             fieldList = beanClass.getDeclaredField(nomFieldList);
             fieldList.setAccessible(true);
@@ -184,6 +215,7 @@ public class PersistantManager {
         }
 
         assert fieldList != null;
+        // get(null) pour recuperer tous les contenus et non un seul en particulier
         ArrayList<T> uneListe = (ArrayList<T>) fieldList.get(null);
 
         for (T bean : uneListe) {
@@ -196,6 +228,14 @@ public class PersistantManager {
         return null;
     }
 
+    /**
+     * Methode permettant d'insérer les données dans la Database
+     * Return Row Count inserted
+     *
+     * @return int
+     * @throws SQLException : une erreur dûe à une mauvaise manipulation de la Base de données
+     * @see ImportingDatabase
+     */
     public static <T> int insert(T bean) throws SQLException {
 
         int nbInsertions = 0;//on retourne un nombre d'insertions
@@ -206,31 +246,33 @@ public class PersistantManager {
 
         requeteSql.append(tableBean).append(getNomCol(bean, primaryKeyName)).append("VALUES (");
         Field[] fields = representantBean.getDeclaredFields();
-        Annotation annotation;
-        for (Field field : fields) {
-            field.setAccessible(true);
-            if (field.getName().equals(primaryKeyName) || (field.getType().isPrimitive()
-                    || field.getType().isInstance(""))) {
-                try {
-                    requeteSql.append("'").append(field.get(bean)).append("', ");
-                } catch (IllegalAccessException e) {
-                    System.out.println("Impossible d'accéder au " + field.getName() + " du bean "
-                            + tableBean);
-                    e.printStackTrace();
-                }
-            }
-        }
+        compositionChampsTable(fields, bean, primaryKeyName, requeteSql);
         requeteSql = new StringBuilder(requeteSql.substring(0, requeteSql.length() - 2) + ")");
         System.out.println("SQL : " + requeteSql);
 
         ImportingDatabase.retrieveInsert(requeteSql.toString());
-
         nbInsertions++;
 
+        nbInsertions = insertionBeansComplexes(fields, nbInsertions, bean);
+
+        return nbInsertions;
+    }
+
+    /**
+     * Methode permettant d'insérer les beans Complexes
+     * Retourne le nombre de ligne insérée avec les beans complexes
+     *
+     * @param fields       Tableau de tous les champs de la Class<T> beanClass
+     * @param nbInsertions nombre d'insertion faite ou déjà faite
+     * @param bean         la bean utilisée dans la recursivité pour vérifier si elle est complexe ou simple
+     * @return int
+     * @see Annotation
+     */
+    public static <T> int insertionBeansComplexes(Field[] fields, int nbInsertions, T bean) {
         for (Field field : fields) {
             try {
                 if (field.getAnnotations().length != 0) {
-                    annotation = field.getAnnotations()[0];
+                    Annotation annotation = field.getAnnotations()[0];
                     if (annotation instanceof Ignore)
                         continue;
 
@@ -242,17 +284,52 @@ public class PersistantManager {
                             nbInsertions += insert(field.get(bean));
                     }
                 }
-            } catch (IllegalAccessException e) {
-                System.out.println("Impossible d'accéder au " + field.getName() + " du com.bean "
-                        + tableBean);
+            } catch (IllegalAccessException | SQLException e) {
+                System.out.println("Impossible d'accéder au " + field.getName());
                 e.printStackTrace();
             }
         }
-
         return nbInsertions;
     }
 
+    /**
+     * Methode permettant de composer la requête qui sera exécutée pour l'insertion
+     * Elle est chargée d'aller recupérer les noms de champs de la table en introduisant les valeurs voulu pour insertion
+     *
+     * @param fields         tableau contenant tous les champs de la classe (Class<T> beanClass)
+     * @param bean           la bean utilisée dans la recursivité pour vérifier si elle est complexe ou simple
+     * @param primaryKeyName le nom de la clé primaire utilisé pour la Tbale courante
+     * @param requeteSql     contient le debut de la requête SQL à exécuter (INSERT INTO...)
+     */
+    public static <T> void compositionChampsTable(Field[] fields, T bean, String primaryKeyName, StringBuilder requeteSql) {
+        for (Field field : fields) {
+            field.setAccessible(true);
+            if (field.getName().equals(primaryKeyName) || (field.getType().isPrimitive()
+                    || field.getType().isInstance(""))) {
+                try {
+                    // Enlever le <'> lorsque'il s'agit d'un Integer
+                    if (field.get(bean) instanceof Integer) {
+                        requeteSql.append(field.get(bean)).append(", ");
 
+                    } else {
+                        requeteSql.append("'").append(field.get(bean)).append("', ");
+                    }
+                } catch (IllegalAccessException e) {
+                    System.out.println("Impossible d'accéder au " + field.getName());
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     * Methode d'insertion multiple
+     *
+     * @param listeBeans : la liste contenant tous les beans prêt pour insertion
+     * @return int (nombre d'insertion faite)
+     * @throws SQLException           : s'il y a erreur dans l'accès de la base de données
+     * @throws IllegalAccessException : Impossible d'accéder au Champs
+     */
     public static <T> int bulkInsert(List<T> listeBeans) throws SQLException, IllegalAccessException {
         int nbInsertions = 0;
         for (T bean : listeBeans) {
@@ -263,8 +340,14 @@ public class PersistantManager {
         return nbInsertions;
     }
 
-    private static <T> String getNomCol(T bean, String primaryKeyName) {//methode pour obtenir le nom de colonne de la table ou on veut
-        //inserer nos valeurs
+    /**
+     * Methode permettant d'aller chercher le nom de champs de la Table dans la Base de données
+     *
+     * @param bean           : La bean actuellement évaluée (Correspond à la Table dans une BD)
+     * @param primaryKeyName : correspond au nom du champs de la clé primaire
+     * @return String
+     */
+    private static <T> String getNomCol(T bean, String primaryKeyName) {
         StringBuilder nomCol = new StringBuilder(" (");
         Field[] fields = bean.getClass().getDeclaredFields();
 
@@ -277,6 +360,13 @@ public class PersistantManager {
         return nomCol.toString();
     }
 
+    /**
+     * Methode permettant de Vérifier l'existence de la Bean avant Insertion
+     *
+     * @param bean : correspond à la bean dont on veut connaître l'existence
+     * @return boolean
+     * @throws IllegalAccessException : Impossible d'accéder à un Champs
+     */
     private static <T> boolean VerifierExistenceBean(T bean) throws IllegalAccessException {
         String nomClePrimaire = bean.getClass().getAnnotation(Bean.class).primaryKey();
         Field[] fields = bean.getClass().getDeclaredFields();

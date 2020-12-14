@@ -55,7 +55,9 @@ public class Etudiant {
     }
 
     /**
-     * METHODE PERMETTANT DE RECHERCHER UN ELEMENT DANS LA LISTE
+     * Methode permettant de Vérifier l'existence d'un élement de la liste
+     * @param liste : Liste dont on veut recherchée l'élement
+     * @param unID : correspond à l'etudiantid de l'Etudiant Recherché
      * Return true if found element
      * */
     public static boolean isContainedEtudiant(List<Etudiant> liste, int unID){
@@ -66,9 +68,21 @@ public class Etudiant {
         return false;
     }
 
+    /**
+     * Methode permettant d'aller chercher un Etudiant dans la Liste des Etudiants
+     * @param liste : La liste contenant les étudiants
+     * @param etudiantid : L'etudiantid de l'Etudiant recherché
+     * @return Etudiant
+     * */
+    public static Etudiant askMeStudent(List<Etudiant> liste, int etudiantid){
+        for (Etudiant e : liste)
+            if(e.getEtudiantid() == etudiantid)
+                return e;
+        return null;
+    }
+
     @Override
     public String toString() {
-
         return "Etudiant : " + etudiantid + " - " + fname + " " + lname + " a " + age + " ans";
     }
 }
