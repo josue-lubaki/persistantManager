@@ -1,13 +1,11 @@
 package com;
 
-import com.bean.Cours;
-import com.bean.Etudiant;
-import com.bean.Inscription;
+import com.bean.*;
 import com.database.ImportingDatabase;
 import com.persistance.PersistantManager;
+import com.sun.xml.internal.ws.wsdl.writer.document.Import;
 
 import java.sql.SQLException;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -19,10 +17,9 @@ import static com.GestionTransaction.listeCoursEtudiant;
 public class Main {
     private static final Scanner scan = new Scanner(System.in);
     private static final Scanner chiffre = new Scanner(System.in);
-    public static ImportingDatabase uneConnexion = new ImportingDatabase(); //importation et conncexion
 
-    public static void main(String[] args) throws IllegalAccessException, SQLException {
-        int monChoix = 0;
+    public static void main(String[] args) {
+        int monChoix;
         do {
             System.out.println("******************************************************************");
             System.out.println("\t\t\tMENU PRINCIPALE\n\t\t\t---------------\n" +
@@ -30,22 +27,26 @@ public class Main {
             System.out.println("1. Obtenir les Données Venant de la Base des Données\n" +
                     "2. Entrer une nouvelle donnée dans la Base de Données\n" +
                     "3. Quitter");
-            try{
-                monChoix = chiffre.nextInt();
-            }catch(InputMismatchException e){
-                System.out.println("Le format d'écriture n'est pas correct, entrer un chiffre");
-            }
-
-
-            if (monChoix == 1)
-                MenuConsultationDonnees();
-            else if (monChoix == 2)
-                MenuInsertUpdateData();
-            else if (monChoix == 3) {
-                uneConnexion.close();
-                chiffre.close();
-                scan.close();
-                System.exit(0);
+            monChoix = chiffre.nextInt();
+            try {
+                if (monChoix == 1)
+                    MenuConsultationDonnees();
+                else if (monChoix == 2)
+                    MenuInsertUpdateData();
+                else if (monChoix == 3) {
+                    chiffre.close();
+                    scan.close();
+                    System.exit(0);
+                }
+            } catch (SQLException throwables) {
+                System.out.println("SQL error : " + throwables.getMessage());
+                throwables.printStackTrace();
+            } catch (IllegalAccessException e) {
+                System.out.println("Erreur d'accès sur le Champ : " + e.getMessage());
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                System.out.println("Erreur d'instanciation de la Classe " + e.getMessage());
+                e.printStackTrace();
             }
 
         } while (true);
@@ -54,7 +55,7 @@ public class Main {
     /******************************************************************************************************
      *****    METHODE AFFICHANT LE MENU QUI PERMET DE RECUEILLIR LES DONNÉES PROVENANT DE LA BASE     *****
      *****************************************************************************************************/
-    private static void MenuConsultationDonnees() {
+    private static void MenuConsultationDonnees() throws SQLException, IllegalAccessException, InstantiationException {
         System.out.println("******************************************************************");
         System.out.println("\t\t\tRECUPERATION DONNEES");
         int choixUser;
@@ -148,7 +149,7 @@ public class Main {
                     choixUser = -1;
                 }
             } while (!decision.equals("y") && !decision.equals("n"));
-
+            ImportingDatabase.disconnect(ImportingDatabase.getConnexion());
         } while (choixUser != 1 && choixUser != 2 && choixUser != 3 && choixUser != 4 && choixUser != 5
                 && choixUser != 6 && choixUser != 0);
     }
@@ -156,7 +157,7 @@ public class Main {
     /*****************************************************************************************************
      ***     METHODE AFFICHANT LE MENU QUI PERMET D'INSERER, METTRE À JOURS DANS LA BASE DE DONNÉES      **
      *****************************************************************************************************/
-    private static void MenuInsertUpdateData() throws IllegalAccessException, SQLException {
+    private static void MenuInsertUpdateData() throws IllegalAccessException, SQLException, InstantiationException {
         System.out.println("******************************************************************");
         System.out.println("\t\t\tINSERTION ET UPDATE DONNEES");
         int choixUser;
@@ -182,7 +183,6 @@ public class Main {
                 case 2:
                     System.out.println("******************************************************************");
                     GestionTransaction.ajouterCoursBD();
-                    System.out.println("******************************************************************");
                     break;
                 case 3:
                     System.out.println("******************************************************************");
@@ -219,19 +219,19 @@ public class Main {
                     choixUser = -1;
                 }
             } while (!decision.equals("y") && !decision.equals("n"));
-
+            ImportingDatabase.disconnect(ImportingDatabase.getConnexion());
         } while (choixUser != 1 && choixUser != 2 && choixUser != 3 && choixUser != 4 && choixUser != 5
                 && choixUser != 6 && choixUser != 0);
     }
 
 
     /**
-     * Methode permettant de lister les contenues d'une Liste
-     * @return void
+     * METHODE PERMETTANT DE LISTER LES CONTENUES D'UNE LISTE
      */
     public static <T> void listing(List<T> maListe) {
         maListe.forEach(System.out::println);
     }
+
 
     /*********************************************************************************************
      ************     METHODES QUI PERMETTENT À L'UTILISATEUR D'ENTRÉE LES DONNÉES     ************
