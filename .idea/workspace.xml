@@ -40,48 +40,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc58660-ab83-40e9-b472-2ed006fc0fce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_27_1_jre.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_guice_4_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_inject_javax_inject_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_17.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inf1035-tp2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Inf1035-tp2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/READ.ME" beforeDir="false" afterPath="$PROJECT_DIR$/READ.ME" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/GestionTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/GestionTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/Cours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/Cours.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/CoursBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/CoursBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/Etudiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/Etudiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/EtudiantBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/EtudiantBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/Inscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/Inscription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bean/InscriptionBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bean/InscriptionBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/database/Connectivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/database/Connectivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/database/ConnectivityChecking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/database/ConnectivityChecking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/database/ImportingDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/database/ImportingDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/persistance/PersistantManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/persistance/PersistantManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Cours.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CoursBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CustomAccessException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Etudiant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EtudiantBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ImportingDatabase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Inscription.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InscriptionBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/annotations/Bean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/annotations/BeanList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/annotations/Ignore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/annotations/idBeanExterne.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +64,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -181,6 +152,16 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="531" y="328" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1608063304924">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="531" y="328" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog/0.25.1440.875@0.25.1440.875" timestamp="1608063304924" />
+    <state x="258" y="121" key="Maven.ArtifactSearchDialog" timestamp="1608062752127">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="258" y="121" key="Maven.ArtifactSearchDialog/0.25.1440.875@0.25.1440.875" timestamp="1608062752127" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -205,7 +186,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/persistance/PersistantManager.java</url>
-          <line>247</line>
+          <line>245</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">

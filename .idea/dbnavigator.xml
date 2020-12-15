@@ -16,7 +16,7 @@
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="SQL" />
-      <charset value="windows-1252" />
+      <charset value="UTF-8" />
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -25,8 +25,8 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d">
-        <schema name="pg_catalog" object-types="table, view, function" />
-        <schema name="public" object-types="table, view, function, index, dataset trigger, sequence, constraint, column" />
+        <schema name="pg_catalog" object-types="view, function, table" />
+        <schema name="public" object-types="view, column, function, dataset trigger, sequence, constraint, index, table" />
       </connection>
     </loaded-nodes>
   </component>
@@ -88,11 +88,64 @@ insert into cours (coursid, namecours, sigle, description) values (4, 'Sujet Spe
 
 insert into cours (coursid, namecours, sigle, description) values (5, 'Systeme Exploitation', 'SIF1015', 'Tres difficile');
 
-insert into cours (coursid, namecours, sigle, description) values (8, 'Mathematique', 'PIF1006', 'Matricielle & Turing');]]></console>
+insert into cours (coursid, namecours, sigle, description) values (8, 'Mathematique', 'PIF1006', 'Matricielle & Turing');
+
+
+insert into etudiant (etudiantid, fname, lname, age) values (101, 'Xuyao', 'Hu', 22);
+
+insert into etudiant (etudiantid, fname, lname, age) values (102, 'Josue', 'Lubaki', 21);
+
+insert into etudiant (etudiantid, fname, lname, age) values (103, 'Ismael', 'Coulibaly', 22);
+
+insert into etudiant (etudiantid, fname, lname, age) values (104, 'Raissa', 'Mbikayi', 20);
+
+insert into etudiant (etudiantid, fname, lname, age) values (106, 'Arnaud', 'Mbikayi', 19);
+
+insert into etudiant (etudiantid, fname, lname, age) values (107, 'Juslin', 'Kalambayi', 24);
+
+insert into etudiant (etudiantid, fname, lname, age) values (108, 'Benjamin', 'Mbu', 20);
+
+insert into etudiant (etudiantid, fname, lname, age) values (113, 'Sarah', 'Payton', 18);
+
+insert into etudiant (etudiantid, fname, lname, age) values (118, 'Simon', 'Pierre', 19);
+
+insert into etudiant (etudiantid, fname, lname, age) values (119, 'Patrick', 'Bruel', 25);
+
+insert into etudiant (etudiantid, fname, lname, age) values (120, 'Kevin', 'Bruel', 20);
+
+insert into etudiant (etudiantid, fname, lname, age) values (122, 'Laeticia', 'Payton', 24);
+
+insert into etudiant (etudiantid, fname, lname, age) values (123, 'Green', 'Parker', 25);
+
+insert into etudiant (etudiantid, fname, lname, age) values (132, 'Gradine', 'ili', 21);
+
+insert into etudiant (etudiantid, fname, lname, age) values (133, 'Richardson', 'Cortès', 22);
+
+insert into etudiant (etudiantid, fname, lname, age) values (134, 'Grâce', 'Malobo', 20);
+
+
+
+insert into cours (coursid, namecours, sigle, description) values (1, 'Cours de Math', 'MATH1015', 'Exercice Math');
+
+insert into cours (coursid, namecours, sigle, description) values (2, 'Concept Avances en Object', 'INF1035', 'POO en C# et Java');
+
+insert into cours (coursid, namecours, sigle, description) values (4, 'Sujet Speciaux', 'INF1033', 'Developpement en Python');
+
+insert into cours (coursid, namecours, sigle, description) values (5, 'Systeme Exploitation', 'SIF1015', 'Tres difficile');
+
+insert into cours (coursid, namecours, sigle, description) values (8, 'Mathematique', 'PIF1006', 'Matricielle & Turing');
+
+insert into cours (coursid, namecours, sigle, description) values (9, 'Base de donnée 1', 'SMI1001', 'Apprentissage des Requetes SQL');
+
+insert into cours (coursid, namecours, sigle, description) values (10, 'Probabilité', 'PBL1025', 'Calcul des probabilités');]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" object-ref="schemas/public/tables/inscription" />
+      <object connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" object-ref="schemas/public/tables/etudiant" />
+      <object connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" object-ref="schemas/public/tables/cours" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" />
@@ -146,7 +199,7 @@ insert into cours (coursid, namecours, sigle, description) values (8, 'Mathemati
           <database value="postgres" />
           <type value="USER_PASSWORD" />
           <user value="postgres" />
-          <deprecated-pwd value="SGVyb2Vz" />
+          <deprecated-pwd value="" />
         </database>
         <properties>
           <auto-commit value="true" />
