@@ -1,1 +1,25 @@
 Josue Lubaki & Ismael Coulibaly & Xuyao Hu
+******************************************
+
+Pour le Bon fonctionnement du code :
+* Créer votre base de données
+	- Creation Table etudiant (INTEGER etudiantid, TEXT fname, TEXT LNAME, INTEGER age)
+	- Creation Table cours (INTEGER coursid, TEXT nomCours, TEXT sigle, TEXT description)
+	- Creation Tbale inscription(INTEGER inscriptionid, INTEGER etudiantid, INTEGER coursid)
+
+* Créer les sequences des tables
+	- sequence de la table etudiant : etudiant_seqs
+	- sequence de la table cours : cours_seqs
+	- sequence de la table inscription : inscription_seqs
+
+N'oublier pas les sequences, cela ne fonctionnera pas
+Voici un exemple de commande, pour une sequence : 
+
+CREATE SEQUENCE public.etudiant_seqs START 99; //Pour creer la sequence
+SELECT nextval('etudiant_seqs'::text); // Pour tester la sequence (verifier si cela fonctionne)
+
+CREATE SEQUENCE public.inscription_seqs START 49;
+SELECT nextval('inscription_seqs'::text);
+
+CREATE SEQUENCE public.cours_seqs START 9;
+SELECT nextval('cours_seqs'::text);
