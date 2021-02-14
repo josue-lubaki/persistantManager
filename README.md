@@ -1,8 +1,8 @@
 # persistantManager
 
-Langage Utilisé : Java
-Dependance : Maven
-Base de Données : PostgreSQL
+- Langage Utilisé : Java
+- Dependance : Maven
+- Base de Données : PostgreSQL
 
 * Projet qui permet de Retrieve les éléments se trouvant dans la Base de Données (BD) pour les inserer dans les beans (Class) Utilisée : @See Retrieve()
   - Etudiant.class
