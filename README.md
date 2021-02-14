@@ -4,7 +4,7 @@
 - Dependance : Maven
 - Base de Données : PostgreSQL
 
-* Projet qui permet de Retrieve les éléments se trouvant dans la Base de Données (BD) pour les inserer dans les beans (Class) Utilisée : @See Retrieve()
+* Projet qui permet de Recupérer les éléments se trouvant dans la Base de Données (BD) pour les insérer dans les beans (Class) Utilisées : @See Retrieve()
   - Etudiant.class
   - Cours.Class
   - Inscription.class
