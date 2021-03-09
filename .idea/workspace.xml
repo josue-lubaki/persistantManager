@@ -40,9 +40,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc58660-ab83-40e9-b472-2ed006fc0fce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ImportingDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inf1035-tp2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Inf1035-tp2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/database/ImportingDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/database/ImportingDatabase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +55,22 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -66,12 +83,26 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Tp-2_Resolus/Nicolas_BoisVert/inf1035-2" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../copie_5/inf1035-tp2" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.27787307" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.Main" />
+      <module name="Inf1035-tp2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Inf1035-tp2" />
@@ -81,6 +112,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -101,7 +133,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -109,104 +153,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1526" y="0" key="#Project_Structure" timestamp="1605759313855">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1526" y="0" key="#Project_Structure/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605759313855" />
-    <state x="1807" y="84" key="#com.intellij.ide.util.MemberChooser" timestamp="1605409325043">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1807" y="84" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605409325043" />
-    <state x="1945" y="136" key="#xdebugger.XInspectDialog" timestamp="1605566396764">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1945" y="136" key="#xdebugger.XInspectDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605566396764" />
-    <state x="533" y="308" width="377" height="365" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1606254603943">
+    <state x="531" y="328" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1608063304924">
       <screen x="0" y="25" width="1440" height="875" />
     </state>
-    <state x="1869" y="248" width="354" height="320" key="DBNavigator.ConnectionAuthenticationDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605418292124" />
-    <state x="533" y="308" width="377" height="365" key="DBNavigator.ConnectionAuthenticationDialog/0.25.1440.875@0.25.1440.875" timestamp="1606254603943" />
-    <state x="1819" y="83" key="DBNavigator.ConnectionInfoDialog" timestamp="1605389421982">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1819" y="83" key="DBNavigator.ConnectionInfoDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605389421982" />
-    <state x="1626" y="98" key="DBNavigator.DatasetFilterDialog" timestamp="1605398540739">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1626" y="98" key="DBNavigator.DatasetFilterDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605398540739" />
-    <state x="1766" y="284" width="560" height="250" key="DBNavigator.IdleConnectionDialog" timestamp="1605416008225">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1766" y="284" width="560" height="250" key="DBNavigator.IdleConnectionDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605416008225" />
-    <state x="1576" y="38" key="DBNavigator.ProjectSettingsDialog" timestamp="1605391377240">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1576" y="38" key="DBNavigator.ProjectSettingsDialog/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605391377240" />
-    <state width="951" height="609" key="DebuggerActiveHint" timestamp="1605911286609">
+    <state x="531" y="328" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog/0.25.1440.875@0.25.1440.875" timestamp="1608063304924" />
+    <state x="258" y="121" key="Maven.ArtifactSearchDialog" timestamp="1608062752127">
       <screen x="0" y="25" width="1440" height="875" />
     </state>
-    <state width="898" height="534" key="DebuggerActiveHint/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605761179999" />
-    <state width="951" height="609" key="DebuggerActiveHint/0.25.1440.875@0.25.1440.875" timestamp="1605911286609" />
-    <state x="1826" y="138" key="FileChooserDialogImpl" timestamp="1605759363809">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1826" y="138" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605759363809" />
-    <state width="1398" height="358" key="GridCell.Tab.0.bottom" timestamp="1605912666929">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1317" height="373" key="GridCell.Tab.0.bottom/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893288" />
-    <state width="1398" height="358" key="GridCell.Tab.0.bottom/0.25.1440.875@0.25.1440.875" timestamp="1605912666929" />
-    <state width="1398" height="358" key="GridCell.Tab.0.center" timestamp="1605912666928">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1317" height="373" key="GridCell.Tab.0.center/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
-    <state width="1398" height="358" key="GridCell.Tab.0.center/0.25.1440.875@0.25.1440.875" timestamp="1605912666928" />
-    <state width="1398" height="358" key="GridCell.Tab.0.left" timestamp="1605912666928">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1317" height="373" key="GridCell.Tab.0.left/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
-    <state width="1398" height="358" key="GridCell.Tab.0.left/0.25.1440.875@0.25.1440.875" timestamp="1605912666928" />
-    <state width="1398" height="358" key="GridCell.Tab.0.right" timestamp="1605912666929">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1317" height="373" key="GridCell.Tab.0.right/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893288" />
-    <state width="1398" height="358" key="GridCell.Tab.0.right/0.25.1440.875@0.25.1440.875" timestamp="1605912666929" />
-    <state width="1398" height="358" key="GridCell.Tab.1.bottom" timestamp="1605912666930">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1317" height="396" key="GridCell.Tab.1.bottom/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
-    <state width="1398" height="358" key="GridCell.Tab.1.bottom/0.25.1440.875@0.25.1440.875" timestamp="1605912666930" />
-    <state width="1398" height="358" key="GridCell.Tab.1.center" timestamp="1605912666930">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1317" height="396" key="GridCell.Tab.1.center/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
-    <state width="1398" height="358" key="GridCell.Tab.1.center/0.25.1440.875@0.25.1440.875" timestamp="1605912666930" />
-    <state width="1398" height="358" key="GridCell.Tab.1.left" timestamp="1605912666930">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1317" height="396" key="GridCell.Tab.1.left/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
-    <state width="1398" height="358" key="GridCell.Tab.1.left/0.25.1440.875@0.25.1440.875" timestamp="1605912666930" />
-    <state width="1398" height="358" key="GridCell.Tab.1.right" timestamp="1605912666930">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state width="1317" height="396" key="GridCell.Tab.1.right/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605764893272" />
-    <state width="1398" height="358" key="GridCell.Tab.1.right/0.25.1440.875@0.25.1440.875" timestamp="1605912666930" />
-    <state x="1547" y="28" key="SettingsEditor" timestamp="1605755590988">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1547" y="28" key="SettingsEditor/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755590988" />
-    <state x="1863" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605393485560">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1863" y="297" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605393485560" />
-    <state x="1592" y="119" width="908" height="630" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1605747010555">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1592" y="119" width="908" height="630" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605747010555" />
-    <state x="1709" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1605755577387">
-      <screen x="1366" y="0" width="1360" height="768" />
-    </state>
-    <state x="1709" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768/1366.0.1360.768@1366.0.1360.768" timestamp="1605755577387" />
+    <state x="258" y="121" key="Maven.ArtifactSearchDialog/0.25.1440.875@0.25.1440.875" timestamp="1608062752127" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -216,9 +170,40 @@
           <option name="timeStamp" value="34" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ImportingDatabase.java</url>
+          <line>213</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="45" />
+          <line>211</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
+          <line>271</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/persistance/PersistantManager.java</url>
+          <line>245</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/CoursBuilder.java</url>
+          <line>42</line>
+          <properties class="CoursBuilder">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/ImportingDatabase.java</url>
+          <line>271</line>
+          <properties class="ImportingDatabase">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

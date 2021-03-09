@@ -11,11 +11,11 @@
       <quote-values-containing-separator value="true" />
       <quote-all-values value="false" />
       <value-separator value="" />
-      <file-name value="" />
-      <file-location value="" />
+      <file-name value="inscription.sql" />
+      <file-location value="C:\Users\PC\Desktop\GitLab\INF1035-TP2\copie_5\inf1035-tp2" />
       <scope value="GLOBAL" />
       <destination value="FILE" />
-      <format value="EXCEL" />
+      <format value="SQL" />
       <charset value="UTF-8" />
     </export-instructions>
   </component>
@@ -23,25 +23,39 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d">
+        <schema name="pg_catalog" object-types="view, function, table" />
+        <schema name="public" object-types="view, column, function, dataset trigger, sequence, constraint, index, table" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d">
-      <console name="Connectivity" type="STANDARD" schema="public" session="Main">/* Creation Table etudiant */
+      <console name="Connectivity" type="STANDARD" schema="public" session="Main"><![CDATA[/* Creation Table etudiant */
 Create table etudiant(
     etudiantid int NOT NULL PRIMARY KEY,
     fname varchar NOT NULL,
-    lname varchar NOT NULL,
-    age int NOT NULL CONSTRAINT check_age CHECK (age &gt; 16)
+    lname varchar NULL,
+    age int NULL default 18
 )
 
 /* Creation Table cours */
 Create table cours(
     coursid int NOT NULL PRIMARY KEY,
-    nameCours varchar NOT NULL,
-    sigle varchar NOT NULL,
+    nameCours varchar,
+    sigle varchar, 
     description text
 )
+
+/* Suppression de la Table */
+Drop table inscription;
+Drop table cours;
+Drop table etudiant;
+DROP sequence etudiant_seqs;
+DROP sequence inscription_seqs;
+DROP sequence cours_seqs;
+commit;
 
 /* Creation Table inscription */
 Create table inscription(
@@ -54,11 +68,84 @@ Create table inscription(
 Insert into etudiant values(101,'Xuyao','Hu',23);
 Insert into cours values (2,'Concept Avances en Object','Java','MATH1013');
 Insert into inscription (inscriptionid,etudiantid,coursid) values (5,103,2);
-SELECT * FROM etudiant WHERE etudiantid = 102;</console>
+SELECT * FROM etudiant WHERE etudiantid = 102;
+
+/* Creation Sequence */
+CREATE SEQUENCE public.etudiant_seqs START 133;
+SELECT nextval('etudiant_seqs'::text)
+CREATE SEQUENCE public.inscription_seqs START 50;
+SELECT nextval('inscription_seqs'::text)
+
+CREATE SEQUENCE public.cours_seqs START 9;
+SELECT nextval('cours_seqs'::text)
+
+/* Insertion Multiple */
+insert into cours (coursid, namecours, sigle, description) values (1, 'Cours de Math', 'MATH1015', 'Exercice Math');
+
+insert into cours (coursid, namecours, sigle, description) values (2, 'Concept Avances en Object', 'INF1035', 'POO en C# et Java');
+
+insert into cours (coursid, namecours, sigle, description) values (4, 'Sujet Speciaux', 'INF1033', 'Developpement en Python');
+
+insert into cours (coursid, namecours, sigle, description) values (5, 'Systeme Exploitation', 'SIF1015', 'Tres difficile');
+
+insert into cours (coursid, namecours, sigle, description) values (8, 'Mathematique', 'PIF1006', 'Matricielle & Turing');
+
+
+insert into etudiant (etudiantid, fname, lname, age) values (101, 'Xuyao', 'Hu', 22);
+
+insert into etudiant (etudiantid, fname, lname, age) values (102, 'Josue', 'Lubaki', 21);
+
+insert into etudiant (etudiantid, fname, lname, age) values (103, 'Ismael', 'Coulibaly', 22);
+
+insert into etudiant (etudiantid, fname, lname, age) values (104, 'Raissa', 'Mbikayi', 20);
+
+insert into etudiant (etudiantid, fname, lname, age) values (106, 'Arnaud', 'Mbikayi', 19);
+
+insert into etudiant (etudiantid, fname, lname, age) values (107, 'Juslin', 'Kalambayi', 24);
+
+insert into etudiant (etudiantid, fname, lname, age) values (108, 'Benjamin', 'Mbu', 20);
+
+insert into etudiant (etudiantid, fname, lname, age) values (113, 'Sarah', 'Payton', 18);
+
+insert into etudiant (etudiantid, fname, lname, age) values (118, 'Simon', 'Pierre', 19);
+
+insert into etudiant (etudiantid, fname, lname, age) values (119, 'Patrick', 'Bruel', 25);
+
+insert into etudiant (etudiantid, fname, lname, age) values (120, 'Kevin', 'Bruel', 20);
+
+insert into etudiant (etudiantid, fname, lname, age) values (122, 'Laeticia', 'Payton', 24);
+
+insert into etudiant (etudiantid, fname, lname, age) values (123, 'Green', 'Parker', 25);
+
+insert into etudiant (etudiantid, fname, lname, age) values (132, 'Gradine', 'ili', 21);
+
+insert into etudiant (etudiantid, fname, lname, age) values (133, 'Richardson', 'Cortès', 22);
+
+insert into etudiant (etudiantid, fname, lname, age) values (134, 'Grâce', 'Malobo', 20);
+
+
+
+insert into cours (coursid, namecours, sigle, description) values (1, 'Cours de Math', 'MATH1015', 'Exercice Math');
+
+insert into cours (coursid, namecours, sigle, description) values (2, 'Concept Avances en Object', 'INF1035', 'POO en C# et Java');
+
+insert into cours (coursid, namecours, sigle, description) values (4, 'Sujet Speciaux', 'INF1033', 'Developpement en Python');
+
+insert into cours (coursid, namecours, sigle, description) values (5, 'Systeme Exploitation', 'SIF1015', 'Tres difficile');
+
+insert into cours (coursid, namecours, sigle, description) values (8, 'Mathematique', 'PIF1006', 'Matricielle & Turing');
+
+insert into cours (coursid, namecours, sigle, description) values (9, 'Base de donnée 1', 'SMI1001', 'Apprentissage des Requetes SQL');
+
+insert into cours (coursid, namecours, sigle, description) values (10, 'Probabilité', 'PBL1025', 'Calcul des probabilités');]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" object-ref="schemas/public/tables/inscription" />
+      <object connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" object-ref="schemas/public/tables/etudiant" />
+      <object connection-id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" object-ref="schemas/public/tables/cours" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="ef666b0e-2e75-4576-81b6-861ae5a5a33d" />
@@ -115,7 +202,7 @@ SELECT * FROM etudiant WHERE etudiantid = 102;</console>
           <deprecated-pwd value="" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />
