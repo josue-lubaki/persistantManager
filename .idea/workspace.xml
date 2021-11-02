@@ -40,12 +40,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc58660-ab83-40e9-b472-2ed006fc0fce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_3_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_27_1_jre.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_30_1_jre.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_guice_4_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_guice_5_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_18.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_24_jre7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inf1035-tp2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Inf1035-tp2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/database/ImportingDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/database/ImportingDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/GestionTransaction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/annotations/Bean.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/annotations/BeanList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/annotations/Ignore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/annotations/idBeanExterne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/Cours.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/CoursBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/Etudiant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/EtudiantBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/Inscription.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bean/InscriptionBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/database/Connectivity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/database/ConnectivityChecking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/database/ImportingDatabase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/database/ImportingDatabaseModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/exception/CustomAccessException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/persistance/PersistantManager.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +92,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
@@ -82,9 +102,17 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../copie_5/inf1035-tp2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect" value="PostgreSQL" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.27787307" />
@@ -125,8 +153,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605564949616</updated>
+      <workItem from="1635882699293" duration="3204000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -152,16 +184,6 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="531" y="328" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1608063304924">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state x="531" y="328" width="377" height="318" key="DBNavigator.ConnectionAuthenticationDialog/0.25.1440.875@0.25.1440.875" timestamp="1608063304924" />
-    <state x="258" y="121" key="Maven.ArtifactSearchDialog" timestamp="1608062752127">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state x="258" y="121" key="Maven.ArtifactSearchDialog/0.25.1440.875@0.25.1440.875" timestamp="1608062752127" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -183,11 +205,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
           <line>271</line>
           <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/persistance/PersistantManager.java</url>
-          <line>245</line>
-          <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/CoursBuilder.java</url>

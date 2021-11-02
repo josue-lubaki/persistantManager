@@ -64,7 +64,7 @@ public class ImportingDatabase {
                     "postgresql",
                     "localhost",
                     "postgres",
-                    "tmtc",
+                    "Heroes",
                     5432,
                     "postgres");
         }
