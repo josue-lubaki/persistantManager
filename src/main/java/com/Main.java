@@ -22,7 +22,7 @@ public class Main {
         do {
             System.out.println("******************************************************************");
             System.out.println("\t\t\t╔═════════════════════╗");
-            System.out.println("\t\t\t║ \tMENU PRINCIPALE   ║");
+            System.out.println("\t\t\t║   MENU PRINCIPALE   ║");
             System.out.println("\t\t\t╚═════════════════════╝");
             System.out.println(" Tapez le chiffre qui correspond à votre action : \n" +
                     "1. Obtenir les Données Venant de la Base des Données\n" +
@@ -60,7 +60,7 @@ public class Main {
     private static void MenuConsultationDonnees() throws SQLException, IllegalAccessException, InstantiationException {
         System.out.println("******************************************************************");
         System.out.println("\t\t\t╔══════════════════════════╗");
-        System.out.println("\t\t\t║ \tRECUPERATION DONNEES   ║");
+        System.out.println("\t\t\t║   RECUPERATION DONNEES   ║");
         System.out.println("\t\t\t╚══════════════════════════╝");
         int choixUser;
         String decision;
@@ -166,7 +166,7 @@ public class Main {
     private static void MenuInsertUpdateData() throws IllegalAccessException, SQLException, InstantiationException {
         System.out.println("******************************************************************");
         System.out.println("\t\t\t╔═════════════════════════════════╗");
-        System.out.println("\t\t\t║ \tINSERTION ET UPDATE DONNEES   ║");
+        System.out.println("\t\t\t║   INSERTION ET UPDATE DONNEES   ║");
         System.out.println("\t\t\t╚═════════════════════════════════╝");
         int choixUser;
         String decision;
@@ -258,7 +258,7 @@ public class Main {
     /* Methode Quitter */
     public static void copyright(){
         System.out.println("╔═══════════════════════════════════════════════════════╗");
-        System.out.println("║ \tCopyright 2020 - Toute Reproduction Interdite ©     ║");
+        System.out.println("║   Copyright 2020 - Toute Reproduction Interdite ©     ║");
         System.out.println("║ @Authors : Josue Lubaki & Ismael Coulibaly & Xuyao Hu ║");
         System.out.println("╚═══════════════════════════════════════════════════════╝");
     }
