@@ -1,37 +1,69 @@
-## Welcome to GitHub Pages
+## Project
 
-You can use the [editor on GitHub](https://github.com/josue-lubaki/persistantManager/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+- Langage Utilisé : Java
+- Dependance : Maven
+- Base de Données : PostgreSQL
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+* Projet qui permet de Recupérer les éléments se trouvant dans la Base de Données (BD) pour les insérer dans les beans (Class) Utilisées : @See Retrieve()
+  - Etudiant.class
+  - Cours.Class
+  - Inscription.class
+  
+* Le Projet implémente également une Methode permettant d'insérer les données provenant de notre Application (Beans) dans le Base de Données : @See BulkInsert()
+* Le projet implémente un module pour la connexion dans la base de données, ce qui permet une facilité de changement de la Base de Données (Passer de PostgreSQL à Oracle par exemple)
 
-### Markdown
+### Prerequis
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Démarrer connection avec PostgreSQL, configurer votre connection
+dans ImportingDatabase.java en remplaçant les valeurs de cette methode par votre connection
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+  public static ImportingDatabase getInstance() {
+        if (con == null) {
+            Injector inject = Guice.createInjector(new ImportingDatabaseModule());
+            ImportingDatabase.instance = inject.getInstance(ImportingDatabase.class);
+            ImportingDatabase.instance.entity.setLoginConnection(
+                    "postgresql",
+                    "localhost",
+                    "postgres",
+                    "password",
+                    5432,
+                    "postgres"
+            );
+        }
+        return instance;
+    }
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- Copier-coller ces instructions sur votre console SQL postgresql
 
-### Jekyll Themes
+```markdown
+ -- CREATION SEQUENCES
+  CREATE SEQUENCE etudiant_seqs START 10;
+  CREATE SEQUENCE cours_seqs START 100;
+  CREATE SEQUENCE inscription_seqs START 1;
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/josue-lubaki/persistantManager/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+  CREATE TABLE IF NOT EXISTS etudiant (
+    etudiantid INTEGER PRIMARY KEY,
+    lname VARCHAR(255) NOT NULL,
+    fname VARCHAR(255) NOT NULL,
+    age INTEGER NOT NULL
+  );
+  
+  CREATE TABLE IF NOT EXISTS cours (
+    coursid INTEGER PRIMARY KEY,
+    nameCours VARCHAR(100) NOT NULL,
+    sigle VARCHAR(25) NOT NULL,
+    description TEXT NOT NULL
+  );
+  
+  CREATE TABLE IF NOT EXISTS inscription (
+    inscriptionid INTEGER PRIMARY KEY,
+    etudiantid INTEGER NOT NULL,
+    coursid INTEGER NOT NULL
+  );
+```
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+For more details see [repository](https://github.com/josue-lubaki/persistantManager)
