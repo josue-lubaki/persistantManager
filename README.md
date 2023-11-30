@@ -36,7 +36,7 @@ en remplaçant les valeurs d'environnement pour vos valeurs.
 - Créer votre base des données postgresql au préalable, puis tester votre connexion
 ![Alt text](images/test_connexion.png)
 
-- Aller sur ```Edit Configuration``````, pour ajouter vos informations de connexion
+- Aller sur ```Edit Configuration```, pour ajouter vos informations de connexion
 ![Alt text](images/edit_config.png)
 ![Alt text](images/environnement_variable.png)
 
