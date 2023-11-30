@@ -13,27 +13,38 @@
 * Le projet implémente un module pour la connexion dans la base de données, ce qui permet une facilité de changement de la Base de Données (Passer de PostgreSQL à Oracle par exemple)
 
 Prerequis:
-- Démarrer connection avec PostgreSQL, configurer votre connection
-dans ImportingDatabase.java en remplaçant les valeurs de cette methode par votre connection
+- Démarrer connection avec PostgreSQL, configurer votre connection de la base de données 
+en remplaçant les valeurs d'environnement pour vos valeurs.
 <pre>
   public static ImportingDatabase getInstance() {
         if (con == null) {
             Injector inject = Guice.createInjector(new ImportingDatabaseModule());
             ImportingDatabase.instance = inject.getInstance(ImportingDatabase.class);
             ImportingDatabase.instance.entity.setLoginConnection(
-                    "postgresql",
-                    "localhost",
-                    "postgres",
-                    "password",
-                    5432,
-                    "postgres"
+                System.getenv("driver"),
+                System.getenv("host"),
+                System.getenv("user"),
+                System.getenv("password"),
+                Integer.parseInt(System.getenv("port")),
+                System.getenv("databaseName")
             );
         }
         return instance;
     }
 </pre>
+
+- Créer votre base des données postgresql au préalable, puis tester votre connexion
+![Alt text](images/test_connexion.png)
+
+- Aller sur ```Edit Configuration``````, pour ajouter vos informations de connexion
+![Alt text](images/edit_config.png)
+![Alt text](images/environnement_variable.png)
+
+- Saisissez les identifiants de connexion de votre base des données
+![Alt text](images/identifiants.png)
+
   
-- Copier-coller ces instructions sur votre console SQL postgresql
+<!-- - Copier-coller ces instructions sur votre console SQL postgresql
   <pre>
   -- CREATION SEQUENCES
   CREATE SEQUENCE etudiant_seqs START 10;
@@ -59,4 +70,4 @@ dans ImportingDatabase.java en remplaçant les valeurs de cette methode par votr
     etudiantid INTEGER NOT NULL,
     coursid INTEGER NOT NULL
   );
-  </pre>
+  </pre> -->

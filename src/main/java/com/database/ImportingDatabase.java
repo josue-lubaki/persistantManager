@@ -61,12 +61,49 @@ public class ImportingDatabase {
             Injector inject = Guice.createInjector(new ImportingDatabaseModule());
             ImportingDatabase.instance = inject.getInstance(ImportingDatabase.class);
             ImportingDatabase.instance.entity.setLoginConnection(
-                    "postgresql",
-                    "localhost",
-                    "postgres",
-                    "Heroes",
-                    5432,
-                    "postgres");
+                    System.getenv("driver"),
+                    System.getenv("host"),
+                    System.getenv("user"),
+                    System.getenv("password"),
+                    Integer.parseInt(System.getenv("port")),
+                    System.getenv("databaseName"));
+
+            // create sequences
+            try {
+                ImportingDatabase.instance.PrepareStatementWithConnexion("CREATE SEQUENCE IF NOT EXISTS etudiant_seqs START 10;");
+                ImportingDatabase.instance.statement.execute();
+                ImportingDatabase.instance.PrepareStatementWithConnexion("CREATE SEQUENCE IF NOT EXISTS cours_seqs START 100;");
+                ImportingDatabase.instance.statement.execute();
+                ImportingDatabase.instance.PrepareStatementWithConnexion("CREATE SEQUENCE IF NOT EXISTS inscription_seqs START 1;");
+                ImportingDatabase.instance.statement.execute();
+
+                // create tables
+                ImportingDatabase.instance.PrepareStatementWithConnexion("CREATE TABLE IF NOT EXISTS etudiant (\n" +
+                        "  etudiantid INTEGER PRIMARY KEY,\n" +
+                        "  lname VARCHAR(255) NOT NULL,\n" +
+                        "  fname VARCHAR(255) NOT NULL,\n" +
+                        "  age INTEGER NOT NULL\n" +
+                        ");");
+                ImportingDatabase.instance.statement.execute();
+                ImportingDatabase.instance.PrepareStatementWithConnexion(
+                        "CREATE TABLE IF NOT EXISTS cours (\n" +
+                                "  coursid INTEGER PRIMARY KEY,\n" +
+                                "  nameCours VARCHAR(100) NOT NULL,\n" +
+                                "  sigle VARCHAR(25) NOT NULL,\n" +
+                                "  description TEXT NOT NULL\n" +
+                                ");"
+                );
+                ImportingDatabase.instance.statement.execute();
+                ImportingDatabase.instance.PrepareStatementWithConnexion(
+                        "CREATE TABLE IF NOT EXISTS inscription (\n" +
+                                "  inscriptionid INTEGER PRIMARY KEY,\n" +
+                                "  etudiantid INTEGER NOT NULL,\n" +
+                                "  coursid INTEGER NOT NULL\n" +
+                                ");");
+                ImportingDatabase.instance.statement.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return instance;
     }

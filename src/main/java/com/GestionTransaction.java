@@ -271,8 +271,15 @@ public class GestionTransaction {
      */
     public static void listeCoursEtudiant() throws IllegalAccessException, SQLException, InstantiationException {
         int idEtudiant = Main.prompt("Entrer l'ID de l'étudiant");
-        System.out.println("Recherche de l'Etudiant avec l'ID : " + idEtudiant + " en cours d'exécution...");
+        System.out.println("Recherche de l'Etudiant avec l'ID \"" + idEtudiant + "\" est en cours d'exécution...");
         List<Inscription> listInscriptionEtudiant = PersistantManager.retrieveSet(Inscription.class, ImportingDatabase.GET_SPECIFIC_SUBSCRIBE_OF_STUDENT(idEtudiant));
+        List<Etudiant> etudiants = PersistantManager.retrieveSet(Etudiant.class, ImportingDatabase.GET_SPECIFIC_STUDENT(idEtudiant));
+
+        if(etudiants.isEmpty()){
+            System.out.println("\tDésolé, l'étudiant avec l'ID \"" + idEtudiant + "\" n'existe pas dans notre base de données");
+            return;
+        }
+
         Etudiant etudiant = PersistantManager.retrieveSet(Etudiant.class, ImportingDatabase.GET_SPECIFIC_STUDENT(idEtudiant)).get(0);
 
         if (!listInscriptionEtudiant.isEmpty()) {
@@ -298,6 +305,14 @@ public class GestionTransaction {
         int idCours = Main.prompt("Entrer l'ID du Cours");
         System.out.println("Recherche du Cours avec l'ID : " + idCours + " en cours d'exécution...");
         List<Inscription> listInscriptionCours = PersistantManager.retrieveSet(Inscription.class, ImportingDatabase.GET_SPECIFIC_SUBSCRIBE_OF_COURSE(idCours));
+
+        List<Cours> courses = PersistantManager.retrieveSet(Cours.class, ImportingDatabase.GET_SPECIFIC_COURSE(idCours));
+
+        if(courses.isEmpty()){
+            System.out.println("\tDésolé, le cours avec l'ID \"" + idCours + "\" n'existe pas dans notre base de données");
+            return;
+        }
+
         Cours monCours = PersistantManager.retrieveSet(Cours.class, ImportingDatabase.GET_SPECIFIC_COURSE(idCours)).get(0);
 
         if (!listInscriptionCours.isEmpty()) {

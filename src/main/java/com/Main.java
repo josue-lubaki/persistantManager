@@ -19,6 +19,10 @@ public class Main {
 
     public static void main(String[] args) {
         int monChoix;
+
+        // initialisation de la connexion à la base de données
+        ImportingDatabase.getInstance();
+
         do {
             System.out.println("******************************************************************");
             System.out.println("\t\t\t╔═════════════════════╗");
@@ -238,7 +242,11 @@ public class Main {
      */
     public static <T> void listing(List<T> maListe) {
         System.out.println("Voici le resultat : ");
-        maListe.forEach(System.out::println);
+        if(maListe.isEmpty()){
+            System.out.println("\tOOPS ! Aucun resultat trouvé");
+        }
+        else
+            maListe.forEach(System.out::println);
     }
 
 
@@ -258,8 +266,8 @@ public class Main {
     /* Methode Quitter */
     public static void copyright(){
         System.out.println("╔═══════════════════════════════════════════════════════╗");
-        System.out.println("║   Copyright 2020 - Toute Reproduction Interdite ©     ║");
-        System.out.println("║ @Authors : Josue Lubaki & Ismael Coulibaly & Xuyao Hu ║");
+        System.out.println("║   Copyright 2023 - Toute Reproduction Interdite ©     ║");
+        System.out.println("║   \t\t\t\t@Authors : Unknown                  ║");
         System.out.println("╚═══════════════════════════════════════════════════════╝");
     }
 }

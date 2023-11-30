@@ -6,6 +6,7 @@ import com.annotations.Bean;
 import com.annotations.BeanList;
 import com.annotations.Ignore;
 import com.annotations.idBeanExterne;
+import org.postgresql.util.PSQLException;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -28,9 +29,12 @@ public class PersistantManager {
     public static <T> List<T> retrieveSet(Class<T> beanClass, String sql) throws SQLException, InstantiationException, IllegalAccessException {
         List<T> records = new ArrayList<>();
         // PREPARATION DE LA REQUETE ET EXECUTION DU 'sql' REÇU EN PARAMETRE
-        ResultSet resultatQuery = ImportingDatabase.retrieve(sql);
-        retrieveBeans(beanClass, resultatQuery, records);
-
+        try{
+            ResultSet resultatQuery = ImportingDatabase.retrieve(sql);
+            retrieveBeans(beanClass, resultatQuery, records);
+        } catch (PSQLException e){
+            // do nothing
+        }
         return records;
     }
 
