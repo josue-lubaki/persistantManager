@@ -13,8 +13,8 @@
 * Le projet implémente un module pour la connexion dans la base de données, ce qui permet une facilité de changement de la Base de Données (Passer de PostgreSQL à Oracle par exemple)
 
 Prerequis:
-- Démarrer connection avec PostgreSQL, configurer votre connection de la base de données 
-en remplaçant les valeurs d'environnement pour vos valeurs.
+- Démarrer connexion avec PostgreSQL, vous allez configurer plus tard votre connection de la base de données 
+en remplaçant les valeurs d'environnement pour vos valeurs, voici à quoi correspond le fichier et les noms des variables System à replacer.
 <pre>
   public static ImportingDatabase getInstance() {
         if (con == null) {
